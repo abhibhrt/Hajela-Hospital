@@ -101,6 +101,7 @@ export default function WikiPage() {
           >
             Exploring Knowledge
           </motion.h2>
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -125,8 +126,9 @@ export default function WikiPage() {
             <FaSearch className="text-red-500 text-3xl" />
           </div>
           <h2 className="text-2xl font-bold text-red-600 mb-3">Knowledge Not Found</h2>
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           <p className="text-gray-700 mb-6">
-            We couldn't find information about <strong>{cleanTopic(topic)}</strong>.
+            We couldn&apos;t find information about <strong>{cleanTopic(topic)}</strong>.
             Try searching for a different topic or check the spelling.
           </p>
           <motion.button
