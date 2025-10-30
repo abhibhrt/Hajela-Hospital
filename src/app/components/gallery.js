@@ -10,7 +10,7 @@ export default function Gallery() {
   const galleryImages = [
     {
       id: 1,
-      src: "/gallery/operation-theater.jpg",
+      src: "/gallery/operation-theatre.png",
       alt: "Modern Operation Theater - Hajela Hospital IVF Center Bhopal",
       title: "Advanced Operation Theater",
       description: "State-of-the-art surgical facility for IVF procedures and laparoscopic surgeries with international standards at Hajela Hospital Bhopal.",
@@ -45,7 +45,7 @@ export default function Gallery() {
       src: "/gallery/success-stories.jpg",
       alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
       title: "Success Celebrations",
-      description: "Join 5000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
+      description: "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
       category: "success"
     },
     {

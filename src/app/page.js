@@ -34,7 +34,7 @@ export default function Home() {
   const galleryImages = [
     {
       id: 1,
-      src: "/gallery/operation-theater.jpg",
+      src: "/gallery/operation-theater.png",
       alt: "Modern Operation Theater - Hajela Hospital IVF Center Bhopal",
       title: "Advanced Operation Theater",
       description: "State-of-the-art surgical facility for IVF procedures and laparoscopic surgeries with international standards at Hajela Hospital Bhopal.",
@@ -42,7 +42,7 @@ export default function Home() {
     },
     {
       id: 2,
-      src: "/gallery/ivf-lab.jpg",
+      src: "/gallery/ivf-lab.png",
       alt: "Advanced IVF Laboratory - Hajela Hospital Fertility Center Bhopal",
       title: "Modern IVF Laboratory",
       description: "Equipped with latest technology for embryo culture, ICSI, and cryopreservation ensuring highest IVF success rates in Bhopal.",
@@ -50,7 +50,7 @@ export default function Home() {
     },
     {
       id: 3,
-      src: "/gallery/recovery-room.jpg",
+      src: "/gallery/recovery-room.png",
       alt: "Patient Recovery Room - Hajela Hospital Bhopal Comfort Care",
       title: "Luxury Recovery Suites",
       description: "Comfortable and private recovery rooms with modern amenities for post-procedure care and relaxation at our Bhopal center.",
@@ -58,7 +58,7 @@ export default function Home() {
     },
     {
       id: 4,
-      src: "/gallery/fertility-assessment.jpg",
+      src: "/gallery/fertility-assessment.png",
       alt: "Fertility Assessment - Dr Supriya Hajela Consultation Bhopal",
       title: "Comprehensive Assessment",
       description: "Detailed fertility evaluation and personalized treatment planning with Dr. Supriya Hajela at Hajela Hospital Bhopal.",
@@ -69,12 +69,12 @@ export default function Home() {
       src: "/gallery/success-stories.jpg",
       alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
       title: "Success Celebrations",
-      description: "Join 5000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
+      description: "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
       category: "success"
     },
     {
       id: 6,
-      src: "/gallery/awards-ceremony.jpg",
+      src: "/gallery/awards-ceremony.png",
       alt: "Awards & Recognition - Dr Supriya Hajela Achievements Bhopal",
       title: "National Recognition",
       description: "Award-winning excellence in reproductive medicine recognized by national medical bodies - Hajela Hospital Bhopal.",
@@ -401,9 +401,7 @@ export default function Home() {
               >
                 <div className="relative h-64 overflow-hidden">
                   {/* Placeholder Background */}
-                  <div className="gallery-image w-full h-full bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
-                    <span className="text-white text-lg font-bold text-center px-4">{image.title}</span>
-                  </div>
+                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
 
                   {/* Overlay */}
                   <div className="gallery-overlay absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -434,35 +432,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-          {/* CTA Section */}
-          <div className="text-center mt-16" data-animate>
-            <div className="bg-gradient-to-r from-blue-600 to-teal-600 rounded-2xl p-8 text-white max-w-4xl mx-auto relative overflow-hidden">
-              <div className="relative z-10">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                  Visit Our World-Class Facility in Bhopal
-                </h3>
-                <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
-                  See our advanced medical equipment and comfortable facilities personally.
-                  Book a facility tour today and start your journey to parenthood with <strong>Dr. Supriya Hajela</strong>.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/book-appointment"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-bold rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 group"
-                  >
-                    📅 Book Facility Tour
-                  </Link>
-                  <a
-                    href="tel:+917551234567"
-                    className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 group"
-                  >
-                    📞 Call for Directions
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -477,7 +446,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/emergency"
+                href="/appointment"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-bold rounded-xl shadow-2xl hover:scale-105 transform transition-all duration-300 group"
               >
                 <FaCalendarCheck className="mr-3 text-xl group-hover:scale-110 transition-transform" />

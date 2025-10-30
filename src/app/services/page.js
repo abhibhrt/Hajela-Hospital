@@ -232,7 +232,7 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/book-appointment" 
+              href="/appointment" 
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-pink-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <FaClinicMedical className="mr-3" /> Book IVF Consultation
@@ -245,7 +245,7 @@ export default function Services() {
             </a>
           </div>
           <p className="text-white/80 text-sm mt-6">
-            NABH Accredited • 14+ Years Experience • 5000+ IVF Cycles • Best Fertility Center Bhopal
+            NABH Accredited • 14+ Years Experience • 17000+ IVF Cycles • Best Fertility Center Bhopal
           </p>
         </div>
       </section>

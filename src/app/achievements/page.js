@@ -85,6 +85,14 @@ export default function Achievements() {
       category: "National Recognition", 
       color: "from-indigo-500 to-indigo-700" 
     },
+    {
+      year: "2025",
+      title: "YOUNG ACHIEVER AWARD",
+      description: "Awarded by the Global Medical Excellence Forum for outstanding contributions in reproductive medicine and IVF advancements.",
+      icon: FaAward,
+      category: "International Excellence",
+      color: "from-yellow-400 to-yellow-600"
+    }
   ];
 
   const leadership = [
@@ -128,7 +136,7 @@ export default function Achievements() {
             Dr. Supriya Hajela - Recognized nationally and internationally for outstanding contributions to reproductive medicine, IVF treatment excellence, and groundbreaking research in fertility care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/book-appointment" className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group animate-bounce">
+            <a href="/appointment" className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group animate-bounce">
               <FaAward className="mr-3 group-hover:scale-110 transition-transform" /> Consult Award-Winning Specialist
             </a>
           </div>
@@ -279,10 +287,10 @@ export default function Achievements() {
             Experience the excellence that has earned national and international recognition. Dr. Supriya Hajela combines award-winning expertise with compassionate care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/book-appointment" className="inline-flex items-center justify-center px-8 py-4 bg-white text-yellow-600 font-bold rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 group">
+            <a href="/appointment" className="inline-flex items-center justify-center px-8 py-4 bg-white text-yellow-600 font-bold rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 group">
               <FaAward className="mr-3 group-hover:scale-110 transition-transform" /> Book Consultation with Award Winner
             </a>
-            <a href="/contact" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-yellow-600 transition-all duration-300 group">
+            <a href="https://maps.app.goo.gl/oqYt1DQrsGS5PB1E9" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-yellow-600 transition-all duration-300 group">
               <FaUserMd className="mr-3" /> Visit Our IVF Center
             </a>
           </div>

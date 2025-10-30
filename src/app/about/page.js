@@ -51,8 +51,8 @@ export default function About() {
 
   const stats = [
     { number: "14+", label: "Years IVF Experience", color: "text-yellow-500" },
-    { number: "5000+", label: "IVF Cycles", color: "text-pink-500" },
-    { number: "68%", label: "Success Rate", color: "text-green-500" },
+    { number: "17000+", label: "IVF Cycles", color: "text-pink-500" },
+    { number: "70%", label: "Success Rate", color: "text-green-500" },
     { number: "NABH", label: "Accredited", color: "text-blue-500" },
   ];
 

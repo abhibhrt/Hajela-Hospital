@@ -19,8 +19,8 @@ const specialFeatures = [
 ];
 
 const stats = [
-    { number: "5000+", label: "IVF Cycles Performed", icon: <FaBullseye /> },
-    { number: "68%", label: "Success Rate", icon: <FaStar /> },
+    { number: "17000+", label: "IVF Cycles Performed", icon: <FaBullseye /> },
+    { number: "70%", label: "Success Rate", icon: <FaStar /> },
     { number: "14+", label: "Years Experience", icon: <FaTrophy /> },
     { number: "NABH", label: "Accredited Centre", icon: <FaShieldAlt /> },
 ];

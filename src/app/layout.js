@@ -105,7 +105,7 @@ export default function RootLayout({ children }) {
     name: 'Hajela Hospital - ART & Reproductive Center',
     description: 'NABH Accredited IVF and Fertility Centre in Bhopal, Madhya Pradesh',
     url: 'https://www.hajelahospital.com',
-    logo: 'https://www.hajelahospital.com/logo.jpeg',
+    logo: 'logo.jpeg',
     telephone: '+91-755-XXXXXXX',
     email: 'info@hajelahospital.com',
     address: {
