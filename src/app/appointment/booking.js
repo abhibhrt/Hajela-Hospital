@@ -17,6 +17,8 @@ export default function AppointmentForm() {
   const { showAlert } = useAlert();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [appointmentData, setAppointmentData] = useState(null);
+  const [downloading, setDownloading] = useState(false);
 
   const appointmentTypes = [
     { value: "ivf", label: "IVF", description: "Full fertility treatment", icon: "💉" },
@@ -49,8 +51,8 @@ export default function AppointmentForm() {
           headers: { "Content-Type": "application/json" },
         }
       );
-
       if (res.status !== 200 && res.status !== 201) throw new Error("Failed to book appointment");
+      setAppointmentData(res.data.appointment);
       setIsSubmitted(true);
     } catch (err) {
       const errorMessage =
@@ -61,6 +63,37 @@ export default function AppointmentForm() {
       setIsSubmitting(false);
     }
   };
+
+  const downloadPdf = async () => {
+    if (!appointmentData) return;
+    try {
+      setDownloading(true);
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/appointments/download-pdf`,
+        appointmentData,
+        { responseType: 'blob' }
+      );
+
+      if (res.status !== 200 && res.status !== 201) throw new Error('failed to generate pdf');
+      const blob = new Blob([res.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'appointment.pdf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('error downloading pdf:', error);
+      showAlert('failed to download pdf', 'error');
+    } finally {
+      setDownloading(false);
+    }
+  };
+
 
   return (
     <div className="lg:col-span-2">
@@ -76,20 +109,23 @@ export default function AppointmentForm() {
           </h2>
           <p className="text-gray-600 text-lg mb-6">
             Thank you for choosing <strong>Dr. Supriya Hajela</strong> for your fertility journey.
-            Our team will contact you within <strong>24 hours</strong> to confirm your appointment details.
+            You can reach us at any time from <strong>10:00am to 5:00pm</strong>.
           </p>
           <div className="space-y-4">
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
               <p className="text-green-700 font-semibold">Next Steps:</p>
               <p className="text-gray-600 text-sm mt-1">
-                We&apos;ll call you at <strong>{formData.phone}</strong> to discuss your consultation timing and preparation.
+                1. Download the PDF of your consultation request.<br />
+                2. Prepare any relevant medical documents.<br />
+                3. Reach out to us by the given address.
               </p>
             </div>
             <button
-              onClick={() => setIsSubmitted(false)}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+              disabled={!appointmentData || downloading}
+              onClick={downloadPdf}
+              className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Book Another Consultation
+              Download PDF
             </button>
           </div>
         </div>
@@ -111,8 +147,8 @@ export default function AppointmentForm() {
                   <label
                     key={type.value}
                     className={`relative flex flex-col items-center p-3 border-2 rounded-xl cursor-pointer transition-all duration-300 ${formData.appointmentType === type.value
-                        ? "border-blue-600 bg-blue-50"
-                        : "border-gray-300 hover:border-blue-400"
+                      ? "border-blue-600 bg-blue-50"
+                      : "border-gray-300 hover:border-blue-400"
                       }`}
                   >
                     <input
@@ -220,7 +256,7 @@ export default function AppointmentForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-blue-600 to-teal-600 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full bg-gradient-to-r from-blue-600 to-teal-600 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer"
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center">
