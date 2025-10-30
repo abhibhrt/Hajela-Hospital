@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { FaAward, FaStethoscope, FaMicroscope, FaSyringe, FaChevronRight, FaChartBar, FaHeart, FaCalendarCheck, FaStar, FaUsers, FaShieldAlt, FaCheckCircle, FaPhoneAlt, FaWhatsapp, FaMapMarkerAlt, FaTimes, FaChevronLeft, FaExpand } from "react-icons/fa";
 import { useEffect, useState, useRef } from "react";
+import galleryData from "@/data/gallery";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -30,58 +31,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // Gallery Images Data
-  const galleryImages = [
-    {
-      id: 1,
-      src: "/gallery/operation-theater.png",
-      alt: "Modern Operation Theater - Hajela Hospital IVF Center Bhopal",
-      title: "Advanced Operation Theater",
-      description: "State-of-the-art surgical facility for IVF procedures and laparoscopic surgeries with international standards at Hajela Hospital Bhopal.",
-      category: "facility"
-    },
-    {
-      id: 2,
-      src: "/gallery/ivf-lab.png",
-      alt: "Advanced IVF Laboratory - Hajela Hospital Fertility Center Bhopal",
-      title: "Modern IVF Laboratory",
-      description: "Equipped with latest technology for embryo culture, ICSI, and cryopreservation ensuring highest IVF success rates in Bhopal.",
-      category: "facility"
-    },
-    {
-      id: 3,
-      src: "/gallery/recovery-room.png",
-      alt: "Patient Recovery Room - Hajela Hospital Bhopal Comfort Care",
-      title: "Luxury Recovery Suites",
-      description: "Comfortable and private recovery rooms with modern amenities for post-procedure care and relaxation at our Bhopal center.",
-      category: "facility"
-    },
-    {
-      id: 4,
-      src: "/gallery/fertility-assessment.png",
-      alt: "Fertility Assessment - Dr Supriya Hajela Consultation Bhopal",
-      title: "Comprehensive Assessment",
-      description: "Detailed fertility evaluation and personalized treatment planning with Dr. Supriya Hajela at Hajela Hospital Bhopal.",
-      category: "consultation"
-    },
-    {
-      id: 5,
-      src: "/gallery/success-stories.jpg",
-      alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
-      title: "Success Celebrations",
-      description: "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
-      category: "success"
-    },
-    {
-      id: 6,
-      src: "/gallery/awards-ceremony.png",
-      alt: "Awards & Recognition - Dr Supriya Hajela Achievements Bhopal",
-      title: "National Recognition",
-      description: "Award-winning excellence in reproductive medicine recognized by national medical bodies - Hajela Hospital Bhopal.",
-      category: "awards"
-    }
-  ];
-
   // Lightbox Functions
   const openLightbox = (image, index) => {
     setSelectedImage(image);
@@ -94,15 +43,15 @@ export default function Home() {
   };
 
   const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
+    const newIndex = currentIndex === 0 ? galleryData.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
-    setSelectedImage(galleryImages[newIndex]);
+    setSelectedImage(galleryData[newIndex]);
   };
 
   const goToNext = () => {
-    const newIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1;
+    const newIndex = currentIndex === galleryData.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-    setSelectedImage(galleryImages[newIndex]);
+    setSelectedImage(galleryData[newIndex]);
   };
 
   const handleKeyDown = (e) => {
@@ -391,7 +340,7 @@ export default function Home() {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
+            {galleryData.map((image, index) => (
               <div
                 key={image.id}
                 className="gallery-item group relative bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl"
@@ -508,9 +457,7 @@ export default function Home() {
               className="bg-white rounded-2xl overflow-hidden max-w-4xl mx-auto border-4 border-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="h-96 bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold text-center px-8">{selectedImage.title}</span>
-              </div>
+              <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain bg-black" />
 
               {/* Image Info */}
               <div className="p-6">
@@ -525,7 +472,7 @@ export default function Home() {
                     {selectedImage.category}
                   </span>
                   <span className="text-gray-500 text-sm">
-                    {currentIndex + 1} / {galleryImages.length}
+                    {currentIndex + 1} / {galleryData.length}
                   </span>
                 </div>
               </div>

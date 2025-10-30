@@ -2,85 +2,11 @@
 
 import { useState } from "react";
 import { FaTimes, FaChevronLeft, FaChevronRight, FaExpand } from "react-icons/fa";
+import galleryData from "@/data/gallery";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const galleryImages = [
-    {
-      id: 1,
-      src: "/gallery/operation-theatre.png",
-      alt: "Modern Operation Theater - Hajela Hospital IVF Center Bhopal",
-      title: "Advanced Operation Theater",
-      description: "State-of-the-art surgical facility for IVF procedures and laparoscopic surgeries with international standards at Hajela Hospital Bhopal.",
-      category: "facility"
-    },
-    {
-      id: 2,
-      src: "/gallery/ivf-lab.jpg",
-      alt: "Advanced IVF Laboratory - Hajela Hospital Fertility Center Bhopal",
-      title: "Modern IVF Laboratory",
-      description: "Equipped with latest technology for embryo culture, ICSI, and cryopreservation ensuring highest IVF success rates in Bhopal.",
-      category: "facility"
-    },
-    {
-      id: 3,
-      src: "/gallery/recovery-room.jpg",
-      alt: "Patient Recovery Room - Hajela Hospital Bhopal Comfort Care",
-      title: "Luxury Recovery Suites",
-      description: "Comfortable and private recovery rooms with modern amenities for post-procedure care and relaxation at our Bhopal center.",
-      category: "facility"
-    },
-    {
-      id: 4,
-      src: "/gallery/fertility-assessment.jpg",
-      alt: "Fertility Assessment - Dr Supriya Hajela Consultation Bhopal",
-      title: "Comprehensive Assessment",
-      description: "Detailed fertility evaluation and personalized treatment planning with Dr. Supriya Hajela at Hajela Hospital Bhopal.",
-      category: "consultation"
-    },
-    {
-      id: 5,
-      src: "/gallery/success-stories.jpg",
-      alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
-      title: "Success Celebrations",
-      description: "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
-      category: "success"
-    },
-    {
-      id: 6,
-      src: "/gallery/awards-ceremony.jpg",
-      alt: "Awards & Recognition - Dr Supriya Hajela Achievements Bhopal",
-      title: "National Recognition",
-      description: "Award-winning excellence in reproductive medicine recognized by national medical bodies - Hajela Hospital Bhopal.",
-      category: "awards"
-    },
-    {
-      id: 7,
-      src: "/gallery/ultrasound-room.jpg",
-      alt: "Advanced Ultrasound Facility - Hajela Hospital Bhopal",
-      title: "Modern Ultrasound Room",
-      description: "High-resolution ultrasound machines for precise fertility monitoring and diagnosis at our Bhopal IVF center.",
-      category: "facility"
-    },
-    {
-      id: 8,
-      src: "/gallery/patient-waiting.jpg",
-      alt: "Comfortable Waiting Area - Hajela Hospital Bhopal",
-      title: "Comfortable Waiting Lounge",
-      description: "Spacious and comfortable waiting area for patients and families at Hajela Hospital IVF Center Bhopal.",
-      category: "facility"
-    },
-    {
-      id: 9,
-      src: "/gallery/team-photo.jpg",
-      alt: "Expert Medical Team - Dr Supriya Hajela IVF Clinic Bhopal",
-      title: "Expert Medical Team",
-      description: "Our dedicated team of fertility specialists, embryologists, and support staff at Hajela Hospital Bhopal.",
-      category: "team"
-    }
-  ];
 
   const openLightbox = (image, index) => {
     setSelectedImage(image);
@@ -93,15 +19,15 @@ export default function Gallery() {
   };
 
   const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
+    const newIndex = currentIndex === 0 ? galleryData.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
-    setSelectedImage(galleryImages[newIndex]);
+    setSelectedImage(galleryData[newIndex]);
   };
 
   const goToNext = () => {
-    const newIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1;
+    const newIndex = currentIndex === galleryData.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-    setSelectedImage(galleryImages[newIndex]);
+    setSelectedImage(galleryData[newIndex]);
   };
 
   const handleKeyDown = (e) => {
@@ -135,7 +61,7 @@ export default function Gallery() {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
+            {galleryData.map((image, index) => (
               <div 
                 key={image.id}
                 className="group relative bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer transform transition-all duration-500"
@@ -283,7 +209,7 @@ export default function Gallery() {
                     {selectedImage.category}
                   </span>
                   <span className="text-gray-500 text-sm">
-                    {currentIndex + 1} / {galleryImages.length}
+                    {currentIndex + 1} / {galleryData.length}
                   </span>
                 </div>
               </div>
@@ -308,7 +234,7 @@ export default function Gallery() {
               "addressRegion": "Madhya Pradesh",
               "addressCountry": "IN"
             },
-            "photo": galleryImages.map(image => ({
+            "photo": galleryData.map(image => ({
               "@type": "ImageObject",
               "contentUrl": `https://www.hajelahospital.com${image.src}`,
               "name": image.alt,
