@@ -23,7 +23,7 @@ export const metadata = {
     default: "Dr. Supriya Hajela | Best IVF & Fertility Specialist in Bhopal | Hajela Hospital",
     template: "%s | Dr. Supriya Hajela - Best IVF Specialist Bhopal"
   },
-  description: "✅ Dr. Supriya Hajela - Award-winning IVF Specialist with 14+ years experience. NABH Accredited IVF Centre in Bhopal offering advanced fertility treatments, ICSI, IUI, PGT & laparoscopic surgeries. Best fertility doctor in Madhya Pradesh.",
+  description: "Dr. Supriya Hajela - Award-winning IVF Specialist with 14+ years experience. NABH Accredited IVF Centre in Bhopal offering advanced fertility treatments, ICSI, IUI, PGT & laparoscopic surgeries. Best fertility doctor in Madhya Pradesh.",
   keywords: [
     "IVF Specialist Bhopal", "Best IVF Doctor in Bhopal", "Fertility Treatment India", 
     "Dr Supriya Hajela", "Hajela Hospital Bhopal", "ICSI IUI IVF Clinic Bhopal",
@@ -51,7 +51,7 @@ export const metadata = {
   },
   openGraph: {
     title: "Dr. Supriya Hajela | IVF & Fertility Specialist – Hajela Hospital Bhopal",
-    description: "✅ Award-winning IVF and Fertility Specialist with 14+ years of expertise. NABH Accredited Centre offering personalized fertility care in Bhopal, Madhya Pradesh.",
+    description: "Award-winning IVF and Fertility Specialist with 14+ years of expertise. NABH Accredited Centre offering personalized fertility care in Bhopal, Madhya Pradesh.",
     url: "https://www.hajelahospital.com",
     siteName: "Hajela Hospital - Best IVF Center Bhopal",
     locale: "en_IN",
@@ -68,7 +68,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dr. Supriya Hajela | Best IVF Specialist in Bhopal",
-    description: "✅ Award-winning IVF & Fertility Specialist at NABH Accredited Hajela Hospital - 14+ Years Experience",
+    description: "Award-winning IVF & Fertility Specialist at NABH Accredited Hajela Hospital - 14+ Years Experience",
     creator: "@HajelaHospital",
     images: ["/twitter-image.jpg"],
   },
@@ -194,41 +194,41 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* ✅ Primary Organization Schema */}
+        {/* Primary Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         
-        {/* ✅ Doctor Profile Schema */}
+        {/* Doctor Profile Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(doctorJsonLd) }}
         />
         
-        {/* ✅ Favicon and Icons */}
+        {/* Favicon and Icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* <link rel="manifest" href="/manifest.json" /> */}
         
-        {/* ✅ Preload Critical Resources */}
+        {/* Preload Critical Resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* ✅ Additional Meta Tags for SEO */}
+        {/* Additional Meta Tags for SEO */}
         <meta name="theme-color" content="#0066cc" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Hajela Hospital" />
         
-        {/* ✅ Geographic Targeting */}
+        {/* Geographic Targeting */}
         <meta name="geo.region" content="IN-MP" />
         <meta name="geo.placename" content="Bhopal" />
         <meta name="geo.position" content="23.2599;77.4126" />
         <meta name="ICBM" content="23.2599, 77.4126" />
         
-        {/* ✅ Business Information */}
+        {/* Business Information */}
         <meta name="business:contact_data:locality" content="Bhopal" />
         <meta name="business:contact_data:region" content="Madhya Pradesh" />
         <meta name="business:contact_data:postal_code" content="462001" />
