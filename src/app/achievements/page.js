@@ -99,7 +99,6 @@ export default function Achievements() {
     { role: "Director & IVF Coordinator", organization: "ART & Reproductive Center, Hajela Hospital", period: "Present", icon: FaUserMd },
     { role: "Treasurer", organization: "Bhopal Menopause Society", period: "2024-2026", icon: FaMedal },
     { role: "Senior Lecturer", organization: "School of Embryology & Assisted Reproduction (SEART)", period: "Present", icon: FaGraduationCap },
-    { role: "Scientific Committee Member", organization: "PCOS Society of India - E3 Seminars", period: "2025", icon: FaMicroscope },
   ];
 
   const certifications = [

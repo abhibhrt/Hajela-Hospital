@@ -208,11 +208,11 @@ export default function BookAppointment() {
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-3 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">5000+</div>
+                    <div className="text-2xl font-bold text-blue-600">17000+</div>
                     <div className="text-gray-600 text-xs">IVF Cycles</div>
                   </div>
                   <div className="text-center p-3 bg-green-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">68%</div>
+                    <div className="text-2xl font-bold text-green-600">70%</div>
                     <div className="text-gray-600 text-xs">Success Rate</div>
                   </div>
                   <div className="text-center p-3 bg-purple-50 rounded-lg">
