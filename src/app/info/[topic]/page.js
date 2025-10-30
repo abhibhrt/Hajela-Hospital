@@ -13,7 +13,7 @@ export default function WikiPage() {
 
   const cleanTopic = (str) => {
     if (!str) return "";
-    return decodeURIComponent(str).replace(/%/g, " ").trim();
+    return decodeURIComponent(str).replace(/-/g, " ").trim();
   };
 
   useEffect(() => {
