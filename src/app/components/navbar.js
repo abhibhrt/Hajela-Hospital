@@ -15,6 +15,7 @@ import {
   FiMail,
 } from "react-icons/fi";
 import { HiOutlineCalendar } from "react-icons/hi";
+import { FaSignInAlt } from "react-icons/fa";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -28,6 +29,7 @@ export default function Navbar() {
     { name: "About", href: "/about", icon: FiUser },
     { name: "Achievements", href: "/achievements", icon: FiAward },
     { name: "Book Appointment", href: "/appointment", icon: HiOutlineCalendar },
+    { name: "Admin Login", href: "/admin", icon: FaSignInAlt}
   ];
 
   useEffect(() => {

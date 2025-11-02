@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import axios from 'axios';
 import { FaUser, FaLock, FaEye, FaEyeSlash, FaSignInAlt } from 'react-icons/fa';
+import { useAlert } from '@/app/hooks/useAlert';
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -10,23 +12,35 @@ export default function Login() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { showAlert } = useAlert();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    if (credentials.username === "admin" && credentials.password === "1234") {
-      localStorage.setItem("admin", JSON.stringify(credentials));
-      alert("Login successful!");
-      window.location.reload();
-    } else {
-      alert("Invalid username or password!");
-    }
 
-    setIsLoading(false);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/admin/signin`,
+        credentials
+      );
+
+      if (response.data?.success) {
+        localStorage.setItem("admin", JSON.stringify(response.data.user));
+        showAlert("Login successful!", "success");
+        window.location.reload();
+      } else {
+        showAlert(response.data?.message || "Invalid credentials", "error");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      showAlert("Something went wrong. Please try again.", "error");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e) => {
-    setCredentials(prev => ({
+    setCredentials((prev) => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
@@ -35,8 +49,6 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md transform transition-all duration-300 hover:scale-[1.02]">
-        
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform duration-300 hover:rotate-12">
             <FaSignInAlt className="text-white text-2xl" />
@@ -46,7 +58,6 @@ export default function Login() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Username Field */}
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">Username</label>
             <div className="relative group">
@@ -65,7 +76,6 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Password Field */}
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">Password</label>
             <div className="relative group">
@@ -91,7 +101,6 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={isLoading}
@@ -111,11 +120,8 @@ export default function Login() {
           </button>
         </form>
 
-        {/* Footer */}
         <div className="mt-6 text-center">
-          <p className="text-gray-600 text-sm">
-            admin access only
-          </p>
+          <p className="text-gray-600 text-sm">admin access only</p>
         </div>
       </div>
     </div>
