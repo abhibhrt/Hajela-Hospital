@@ -39,9 +39,9 @@ const galleryData = [
   },
   {
     id: 5,
-    src: "/gallery/success-stories.jpg",
+    src: "/gallery/IMG-20251108-WA0011.jpg",
     alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
-    title: "IMG-20251108-WA0011.jpg",
+    title: "Success Celebration",
     description:
       "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
     category: "success",
