@@ -3,7 +3,7 @@
 const galleryData = [
   {
     id: 1,
-    src: "/gallery/operation-theater.png",
+    src: "/gallery/recovery-room.png",
     alt: "Modern Operation Theater - Hajela Hospital IVF Center Bhopal",
     title: "Advanced Operation Theater",
     description:
@@ -21,7 +21,7 @@ const galleryData = [
   },
   {
     id: 3,
-    src: "/gallery/recovery-room.png",
+    src: "/gallery/IMG_20251108_160141.jpg",
     alt: "Patient Recovery Room - Hajela Hospital Bhopal Comfort Care",
     title: "Luxury Recovery Suites",
     description:
@@ -30,7 +30,7 @@ const galleryData = [
   },
   {
     id: 4,
-    src: "/gallery/fertility-assessment.png",
+    src: "/gallery/IMG-20251108-WA0005.jpg",
     alt: "Fertility Assessment - Dr Supriya Hajela Consultation Bhopal",
     title: "Comprehensive Assessment",
     description:
@@ -39,9 +39,9 @@ const galleryData = [
   },
   {
     id: 5,
-    src: "/gallery/success-stories.jpg",
+    src: "/gallery/IMG-20251108-WA0011.jpg",
     alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
-    title: "Success Celebrations",
+    title: "Success Celebration",
     description:
       "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
     category: "success",
