@@ -13,6 +13,7 @@ import {
   FaAward,
 } from "react-icons/fa";
 import galleryData from "@/data/gallery";
+import StoryViewer from "./components/storyview";
 import { stats, services, features, schemaData } from "@/data/home";
 
 export default function Home() {
@@ -88,6 +89,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
+      <div className="p-3"> <StoryViewer /> </div>
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -115,7 +117,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Image Section */}
-            <div className="relative" data-animate>
+            <div className="relative">
               <div className="bg-white rounded-2xl shadow-2xl hover:shadow-2xl p-6 transition-all duration-300">
                 <div className="text-center space-y-6">
                   <div className="w-80 h-80 mx-auto bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center shadow-2xl relative">

@@ -76,7 +76,6 @@ export default function AdminDashboard() {
               {sections[activeSection].title}
             </h1>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-600">Hey! Dr. Supriya</span>
               <img src="/dr-image.png" alt="doctor-dp" className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold" />
             </div>
           </div>

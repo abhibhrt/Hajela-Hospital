@@ -1,7 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaBook, FaTimes } from 'react-icons/fa';
+import { FaBook, FaTimes, FaTrash } from 'react-icons/fa';
 import { useAlert } from '@/app/hooks/useAlert';
 
 export default function Story() {
@@ -9,7 +9,29 @@ export default function Story() {
   const [preview, setPreview] = useState(null);
   const [caption, setCaption] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [stories, setStories] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { showAlert } = useAlert();
+
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+
+  // fetch all active stories
+  const fetchStories = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${apiBase}/api/stories`);
+      setStories(res.data || []);
+    } catch (err) {
+      console.error(err);
+      showAlert('failed to fetch stories', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStories();
+  }, []);
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -18,15 +40,21 @@ export default function Story() {
     setPreview(URL.createObjectURL(selected));
   };
 
+  const getToken = () => {
+    const stored = localStorage.getItem('admin');
+    if (!stored) return null;
+    try {
+      const admin = JSON.parse(stored);
+      return admin?.token || null;
+    } catch {
+      return null;
+    }
+  };
+
   const handleUpload = async () => {
     if (!file) return showAlert('select a file first', 'warning');
-
-    const storedAdmin = localStorage.getItem('admin');
-    if (!storedAdmin) return showAlert('admin not found in localstorage', 'error');
-
-    const admin = JSON.parse(storedAdmin);
-    const token = admin?.token;
-    if (!token) return showAlert('invalid admin token', 'error');
+    const token = getToken();
+    if (!token) return showAlert('admin token missing', 'error');
 
     try {
       setUploading(true);
@@ -35,7 +63,7 @@ export default function Story() {
       formData.append('caption', caption);
 
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/stories/upload`,
+        `${apiBase}/api/stories/upload`,
         formData,
         {
           headers: {
@@ -49,11 +77,29 @@ export default function Story() {
       setFile(null);
       setPreview(null);
       setCaption('');
+      setStories((prev) => [res.data, ...prev]);
     } catch (err) {
-      console.error('upload error:', err);
+      console.error(err);
       showAlert('failed to upload story', 'error');
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const token = getToken();
+    if (!token) return showAlert('admin token missing', 'error');
+    if (!confirm('delete this story?')) return;
+
+    try {
+      await axios.delete(`${apiBase}/api/stories/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      showAlert('story deleted successfully', 'success');
+      setStories((prev) => prev.filter((s) => s._id !== id));
+    } catch (err) {
+      console.error(err);
+      showAlert('failed to delete story', 'error');
     }
   };
 
@@ -64,11 +110,14 @@ export default function Story() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col min-h-screen bg-gray-50 p-4 space-y-8">
+      {/* upload form */}
       <div className="w-full max-w-md bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
         <div className="flex items-center space-x-3 mb-4">
           <FaBook className="text-green-500 text-xl" />
-          <h3 className="text-lg font-semibold text-gray-800">Upload Story</h3>
+          <h3 className="text-lg font-semibold text-gray-800">
+            Upload Story
+          </h3>
         </div>
 
         <label className="block mb-2 text-sm font-medium text-gray-600 cursor-pointer">
@@ -124,6 +173,64 @@ export default function Story() {
         >
           {uploading ? 'uploading...' : 'upload story'}
         </button>
+      </div>
+
+      {/* story preview section */}
+      <div className="w-full max-w-5xl">
+        <h3 className="text-xl font-semibold text-gray-800 mb-4">Active Stories</h3>
+
+        {loading ? (
+          <div className="text-gray-600 text-sm">loading stories...</div>
+        ) : stories.length === 0 ? (
+          <div className="bg-white p-6 rounded-xl shadow text-gray-600">
+            no active stories yet
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {stories.map((story) => (
+              <div
+                key={story._id}
+                className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 relative"
+              >
+                <div className="relative">
+                  {story.resource_type === 'video' ? (
+                    <video
+                      src={story.url}
+                      controls
+                      className="w-full h-56 object-cover bg-black"
+                    />
+                  ) : (
+                    <img
+                      src={story.url}
+                      alt={story.caption || 'story'}
+                      className="w-full h-56 object-cover"
+                    />
+                  )}
+
+                  <div className="absolute bottom-3 left-3 bg-black/60 text-white text-sm px-3 py-1 rounded-md">
+                    {story.caption || 'no caption'}
+                  </div>
+
+                  <button
+                    onClick={() => handleDelete(story._id)}
+                    title="delete story"
+                    className="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow cursor-pointer hover:bg-white"
+                  >
+                    <FaTrash className="text-red-500" />
+                  </button>
+                </div>
+
+                <div className="text-xs text-gray-400 p-3">
+                  expires on{' '}
+                  {new Date(story.expireAt).toLocaleString('en-IN', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short',
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
