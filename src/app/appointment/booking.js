@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaUser, FaPhone, FaEnvelope, FaCalendarAlt, FaCheckCircle } from "react-icons/fa";
 import { useAlert } from "@/app/hooks/useAlert";
@@ -14,11 +14,16 @@ export default function AppointmentForm() {
     message: "",
   });
 
+  const [minDate, setMinDate] = useState("");
   const { showAlert } = useAlert();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [appointmentData, setAppointmentData] = useState(null);
   const [downloading, setDownloading] = useState(false);
+
+  useEffect(() => {
+    setMinDate(new Date().toISOString().split("T")[0]);
+  }, []);
 
   const appointmentTypes = [
     { value: "ivf", label: "IVF", description: "Full fertility treatment", icon: "💉" },
@@ -47,17 +52,15 @@ export default function AppointmentForm() {
           date: new Date(formData.preferredDate).toISOString(),
           message: formData.message,
         },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
+        { headers: { "Content-Type": "application/json" } }
       );
-      if (res.status !== 200 && res.status !== 201) throw new Error("Failed to book appointment");
+
+      if (res.status !== 200 && res.status !== 201) throw new Error("failed to book appointment");
       setAppointmentData(res.data.appointment);
       setIsSubmitted(true);
     } catch (err) {
-      const errorMessage =
-        err.response?.data?.message || err.message || "An unexpected error occurred.";
-      console.error("Booking error:", err);
+      const errorMessage = err.response?.data?.message || err.message || "an unexpected error occurred";
+      console.error("booking error:", err);
       showAlert(errorMessage, "error");
     } finally {
       setIsSubmitting(false);
@@ -71,29 +74,28 @@ export default function AppointmentForm() {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/appointments/download-pdf`,
         appointmentData,
-        { responseType: 'blob' }
+        { responseType: "blob" }
       );
 
-      if (res.status !== 200 && res.status !== 201) throw new Error('failed to generate pdf');
-      const blob = new Blob([res.data], { type: 'application/pdf' });
+      if (res.status !== 200 && res.status !== 201) throw new Error("failed to generate pdf");
+      const blob = new Blob([res.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
 
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.download = 'appointment.pdf';
+      link.download = "appointment.pdf";
       document.body.appendChild(link);
       link.click();
       link.remove();
 
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('error downloading pdf:', error);
-      showAlert('failed to download pdf', 'error');
+      console.error("error downloading pdf:", error);
+      showAlert("failed to download pdf", "error");
     } finally {
       setDownloading(false);
     }
   };
-
 
   return (
     <div className="lg:col-span-2">
@@ -104,20 +106,18 @@ export default function AppointmentForm() {
               <FaCheckCircle className="text-2xl text-white" />
             </div>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Consultation Request Received!
-          </h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">consultation request received!</h2>
           <p className="text-gray-600 text-lg mb-6">
-            Thank you for choosing <strong>Dr. Supriya Hajela</strong> for your fertility journey.
-            You can reach us at any time from <strong>10:00am to 5:00pm</strong>.
+            thank you for choosing <strong>dr. supriya hajela</strong> for your fertility journey.
+            you can reach us at any time from <strong>10:00am to 5:00pm</strong>.
           </p>
           <div className="space-y-4">
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <p className="text-green-700 font-semibold">Next Steps:</p>
+              <p className="text-green-700 font-semibold">next steps:</p>
               <p className="text-gray-600 text-sm mt-1">
-                1. Download the PDF of your consultation request.<br />
-                2. Prepare any relevant medical documents.<br />
-                3. Reach out to us by the given address.
+                1. download the pdf of your consultation request.<br />
+                2. prepare any relevant medical documents.<br />
+                3. reach out to us by the given address.
               </p>
             </div>
             <button
@@ -125,30 +125,29 @@ export default function AppointmentForm() {
               onClick={downloadPdf}
               className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Download PDF
+              download pdf
             </button>
           </div>
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 animate-fade-in-up">
           <div className="bg-gradient-to-r from-blue-600 to-teal-600 p-6">
-            <h2 className="text-2xl font-bold text-white">Book Your IVF Consultation</h2>
+            <h2 className="text-2xl font-bold text-white">book your ivf consultation</h2>
             <p className="text-white/90 text-sm mt-1">
-              Fill your details to schedule appointment with Dr. Supriya Hajela
+              fill your details to schedule appointment with dr. supriya hajela
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
-            {/* Appointment Type */}
             <div>
-              <label className="block text-gray-900 font-semibold mb-3">Consultation Type</label>
+              <label className="block text-gray-900 font-semibold mb-3">consultation type</label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {appointmentTypes.map((type) => (
                   <label
                     key={type.value}
                     className={`relative flex flex-col items-center p-3 border-2 rounded-xl cursor-pointer transition-all duration-300 ${formData.appointmentType === type.value
-                      ? "border-blue-600 bg-blue-50"
-                      : "border-gray-300 hover:border-blue-400"
+                        ? "border-blue-600 bg-blue-50"
+                        : "border-gray-300 hover:border-blue-400"
                       }`}
                   >
                     <input
@@ -167,10 +166,9 @@ export default function AppointmentForm() {
               </div>
             </div>
 
-            {/* Name and Phone */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="block text-gray-900 font-semibold">Full Name *</label>
+                <label className="block text-gray-900 font-semibold">full name *</label>
                 <div className="relative">
                   <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
@@ -180,13 +178,13 @@ export default function AppointmentForm() {
                     onChange={handleChange}
                     required
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300"
-                    placeholder="Enter your full name"
+                    placeholder="enter your full name"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-gray-900 font-semibold">Phone Number *</label>
+                <label className="block text-gray-900 font-semibold">phone number *</label>
                 <div className="relative">
                   <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
@@ -196,15 +194,14 @@ export default function AppointmentForm() {
                     onChange={handleChange}
                     required
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300"
-                    placeholder="+91 XXXXXXXXXX"
+                    placeholder="+91 xxxxxxxxxx"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Email */}
             <div className="space-y-2">
-              <label className="block text-gray-900 font-semibold">Email Address</label>
+              <label className="block text-gray-900 font-semibold">email address</label>
               <div className="relative">
                 <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
@@ -218,9 +215,8 @@ export default function AppointmentForm() {
               </div>
             </div>
 
-            {/* Date */}
             <div className="space-y-2">
-              <label className="block text-gray-900 font-semibold">Preferred Consultation Date</label>
+              <label className="block text-gray-900 font-semibold">preferred consultation date</label>
               <div className="relative">
                 <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
@@ -228,31 +224,27 @@ export default function AppointmentForm() {
                   name="preferredDate"
                   value={formData.preferredDate}
                   onChange={handleChange}
-                  min={new Date().toISOString().split("T")[0]}
+                  min={minDate}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300"
                 />
               </div>
               <p className="text-gray-500 text-xs mt-1">
-                Our team will confirm the exact timing via phone call
+                our team will confirm the exact timing via phone call
               </p>
             </div>
 
-            {/* Message */}
             <div className="space-y-2">
-              <label className="block text-gray-900 font-semibold">
-                Medical Concerns &amp; Questions
-              </label>
+              <label className="block text-gray-900 font-semibold">medical concerns & questions</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300 resize-none"
-                placeholder="Please share your fertility concerns, previous treatments, or specific questions for Dr. Supriya Hajela..."
+                placeholder="please share your fertility concerns, previous treatments, or specific questions for dr. supriya hajela..."
               />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -261,15 +253,15 @@ export default function AppointmentForm() {
               {isSubmitting ? (
                 <div className="flex items-center justify-center">
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
-                  Submitting Request...
+                  submitting request...
                 </div>
               ) : (
-                "Request IVF Consultation"
+                "request ivf consultation"
               )}
             </button>
 
             <p className="text-gray-500 text-xs text-center">
-              By submitting, you agree to our privacy policy and consent to contact via phone/email
+              by submitting, you agree to our privacy policy and consent to contact via phone/email
             </p>
           </form>
         </div>

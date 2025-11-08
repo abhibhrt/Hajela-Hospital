@@ -25,7 +25,7 @@ export default function Login() {
       );
 
       if (response.data?.success) {
-        localStorage.setItem("admin", JSON.stringify(response.data.user));
+        localStorage.setItem("admin", JSON.stringify(response.data));
         showAlert("Login successful!", "success");
         window.location.reload();
       } else {
@@ -50,10 +50,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md transform transition-all duration-300 hover:scale-[1.02]">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform duration-300 hover:rotate-12">
-            <FaSignInAlt className="text-white text-2xl" />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
+          <h2 className="text-3xl font-bold text-gray-800">Hey! Admin</h2>
           <p className="text-gray-600 mt-2">Sign in to your account</p>
         </div>
 

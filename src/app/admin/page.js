@@ -9,6 +9,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     const admin = localStorage.getItem("admin");
+    console.log("admin data from localStorage:", admin);
     setLoggedIn(admin);
   }, []);
 

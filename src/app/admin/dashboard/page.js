@@ -22,9 +22,9 @@ export default function AdminDashboard() {
 
   const renderContent = () => {
     switch (activeSection) {
-      case 'appointments': return <Appointments/>
-      case 'gallery': return <Gallery/>
-      case 'story': return <Story/>
+      case 'appointments': return <Appointments />
+      case 'gallery': return <Gallery />
+      case 'story': return <Story />
       default:
         return null;
     }
@@ -50,8 +50,8 @@ export default function AdminDashboard() {
               key={key}
               onClick={() => setActiveSection(key)}
               className={`cursor-pointer w-full flex items-center px-4 py-3 transition-all duration-300 ${activeSection === key
-                  ? 'bg-blue-600 border-r-4 border-yellow-400'
-                  : 'hover:bg-gray-700'
+                ? 'bg-blue-600 border-r-4 border-yellow-400'
+                : 'hover:bg-gray-700'
                 }`}
             >
               <Icon className="text-xl flex-shrink-0" />
@@ -76,12 +76,8 @@ export default function AdminDashboard() {
               {sections[activeSection].title}
             </h1>
             <div className="flex items-center space-x-4">
-              <button className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
-                <FaCog className="text-gray-600" />
-              </button>
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
-                A
-              </div>
+              <span className="text-gray-600">Hey! Dr. Supriya</span>
+              <img src="/dr-image.png" alt="doctor-dp" className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold" />
             </div>
           </div>
         </header>
