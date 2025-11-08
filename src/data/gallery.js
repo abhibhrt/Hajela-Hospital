@@ -21,7 +21,7 @@ const galleryData = [
   },
   {
     id: 3,
-    src: "/gallery/recovery-room.png",
+    src: "/gallery/IMG_20251108_160141.jpg",
     alt: "Patient Recovery Room - Hajela Hospital Bhopal Comfort Care",
     title: "Luxury Recovery Suites",
     description:
