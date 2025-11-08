@@ -65,17 +65,13 @@ export default function StoryViewer() {
     return () => clearTimeout(timerRef.current);
   }, [isOpen, currentIndex]);
 
-  if (loading)
-    return <div className="text-gray-600 text-sm p-4">loading stories...</div>;
-
-  if (stories.length === 0)
+  if (stories.length === 0 || loading)
     return (
-      <div className="text-gray-600 text-sm p-4">no active stories</div>
+      <></>
     );
 
   return (
     <>
-      {/* story thumbnails */}
       <div className="flex gap-3 overflow-x-auto px-3 py-2">
         {stories.map((story, idx) => (
           <div
