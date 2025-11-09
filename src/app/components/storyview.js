@@ -139,8 +139,11 @@ export default function StoryViewer() {
                 <video
                   key={stories[currentIndex].url}
                   src={stories[currentIndex].url}
-                  controls
                   autoPlay
+                  muted
+                  playsInline
+                  disablePictureInPicture
+                  controls={false}
                   className="w-full h-full object-cover"
                   onEnded={nextStory}
                 />
