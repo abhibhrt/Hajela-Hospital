@@ -1,12 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaUser, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { formatDateSafe } from '@/app/utils/dateFormat';
 
 export default function Appointments() {
   const [groupedAppointments, setGroupedAppointments] = useState({});
   const [expanded, setExpanded] = useState({});
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
     const fetchAppointments = async () => {
       try {
         const storedAdmin = localStorage.getItem('admin');
@@ -61,6 +65,16 @@ export default function Appointments() {
 
   const dates = Object.keys(groupedAppointments);
 
+  if (!mounted) {
+    return (
+      <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg border-l-4 border-gray-300">
+        <div className="animate-pulse">
+          <div className="h-8 w-48 bg-gray-200 rounded mb-4"></div>
+        </div>
+      </div>
+    );
+  }
+
   if (dates.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg border-l-4 border-gray-300">
@@ -76,11 +90,12 @@ export default function Appointments() {
       {dates.map((date) => (
         <div key={date}>
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
-            {new Date(date).toLocaleDateString('en-GB', {
+            {formatDateSafe(date, {
+              locale: 'en-GB',
               day: 'numeric',
               month: 'short',
               year: 'numeric',
-            })}
+            }) || date}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

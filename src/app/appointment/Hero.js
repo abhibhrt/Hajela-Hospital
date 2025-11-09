@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { FaCalendarAlt, FaStar } from 'react-icons/fa'
+import Stats from '../components/Stats'
 
 const sectionVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
 
@@ -24,7 +25,7 @@ export default function Hero() {
                         <h1 className='text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight'>
                             Book <span className='bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent'>IVF Consultation</span> With Dr. Supriya Hajela
                         </h1>
-                        <p className='text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto'>
+                        <p className='text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto'>
                             consult with <strong>bhopal&apos;s leading ivf specialist</strong> at <strong>nabh accredited hajela hospital</strong>. begin your fertility treatment journey with 14+ years of expertise.
                         </p>
                     </motion.div>
@@ -39,19 +40,7 @@ export default function Hero() {
                             <h3 className='text-xl font-bold text-gray-900 mb-4 flex items-center'>
                                 <FaStar className='text-yellow-500 mr-2' /> our success metrics
                             </h3>
-                            <div className='grid grid-cols-2 gap-4'>
-                                {[
-                                    { value: '17000+', label: 'ivf cycles', color: 'text-blue-600' },
-                                    { value: '70%', label: 'success rate', color: 'text-green-600' },
-                                    { value: '14+', label: 'years experience', color: 'text-purple-600' },
-                                    { value: 'nabh', label: 'accredited', color: 'text-teal-600' },
-                                ].map((item, i) => (
-                                    <div key={i} className='text-center p-3 bg-gray-50 rounded-lg'>
-                                        <div className={`text-2xl font-bold ${item.color}`}>{item.value}</div>
-                                        <div className='text-gray-600 text-xs'>{item.label}</div>
-                                    </div>
-                                ))}
-                            </div>
+                            <Stats/>
                         </div>
                     </motion.div>
                 </div>

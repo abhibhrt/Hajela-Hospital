@@ -26,7 +26,7 @@ export default function Hero() {
                             Patient <span className='bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent'>Testimonials</span>
                         </h1>
 
-                        <p className='text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto'>
+                        <p className='text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto'>
                             read inspiring stories from couples who achieved their dream of parenthood through advanced fertility treatments at hajela hospital, bhopal.
                         </p>
                     </motion.div>

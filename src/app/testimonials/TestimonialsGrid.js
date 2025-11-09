@@ -5,7 +5,7 @@ import { FaQuoteLeft, FaStar } from 'react-icons/fa'
 
 export default function TestimonialsGrid({ items = [] }) {
     return (
-        <section className='py-16 bg-white'>
+        <section className='py-10 bg-white'>
             <div className='max-w-7xl mx-auto px-2 sm:px-2 lg:px-4'>
                 <motion.div
                     className='text-center mb-16'

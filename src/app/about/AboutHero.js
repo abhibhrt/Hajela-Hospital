@@ -5,12 +5,13 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaUserMd } from 'react-icons/fa'
+import Stats from '../components/Stats'
 
 
 const sectionVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
 
 
-export default function AboutHero({ stats = [] }) {
+export default function AboutHero() {
     return (
         <section className='min-h-[40vh] bg-gradient-to-br from-blue-50 via-white to-pink-50 relative overflow-hidden'>
             <div className='relative z-10 max-w-7xl mx-auto px-2 sm:px-2 lg:px-4 py-8 lg:py-10'>
@@ -34,26 +35,11 @@ export default function AboutHero({ stats = [] }) {
                         </h1>
 
 
-                        <p className='text-xl text-gray-700  max-w-2xl'>
+                        <p className='text-lg text-gray-700  max-w-2xl'>
                             Renowned IVF and fertility specialist with extensive experience in assisted reproductive technology. Director and IVF coordinator at NABH accredited Hajela Hospital, Bhopal. Advanced IVF, ICSI, IUI treatments with proven outcomes.
                         </p>
 
-
-                        <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4'>
-                            {stats.map((stat, index) => (
-                                <motion.div
-                                    key={index}
-                                    className='text-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105'
-                                    initial={{ opacity: 0, y: 12 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ delay: 0.15 + index * 0.04, duration: 0.45 }}
-                                >
-                                    <div className='text-2xl font-bold text-gray-900'>{stat.number}</div>
-                                    <div className='text-xs text-gray-700 mt-1'>{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </div>
+                        <Stats/>
                     </motion.div>
 
                     <motion.div

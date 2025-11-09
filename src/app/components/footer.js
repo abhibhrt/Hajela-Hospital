@@ -15,6 +15,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { FiArrowRight, FiPhone as FiPhoneIcon } from "react-icons/fi";
+import CTA from "./CTA";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -46,6 +47,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white border-t border-gray-700 relative overflow-hidden">
+      <CTA/>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-32 h-32 bg-blue-800 rounded-full animate-pulse"></div>
@@ -149,7 +151,7 @@ export default function Footer() {
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <div className="w-1.5 h-1.5 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="text-sm group-hover:translate-x-1 transition-transform duration-300">{service}</span>
+                  <Link href={`/info/${service}`} className="text-sm group-hover:translate-x-1 transition-transform duration-300">{service}</Link>
                 </li>
               ))}
             </ul>
@@ -193,15 +195,6 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-
-            {/* Emergency CTA */}
-            <Link
-              href="/appointment"
-              className="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-700 to-teal-700 text-white py-3 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-4 group animate-pulse hover:animate-none"
-            >
-              <FiPhoneIcon className="w-4 h-4 group-hover:animate-pulse" />
-              <span className="ml-2">Emergency Appointment</span>
-            </Link>
           </div>
         </div>
 

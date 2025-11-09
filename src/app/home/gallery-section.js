@@ -17,7 +17,7 @@ const fadeUp = {
 };
 
 export default function GallerySection({
-    galleryData,
+    gallery,
     openLightbox,
     selectedImage,
     closeLightbox,
@@ -28,7 +28,7 @@ export default function GallerySection({
 }) {
     return (
         <motion.section
-            className='py-20 bg-gradient-to-br from-gray-50 to-blue-50'
+            className='bg-gradient-to-br from-gray-50 to-blue-50 pb-10'
             id='gallery'
             initial='hidden'
             whileInView='visible'
@@ -39,13 +39,13 @@ export default function GallerySection({
                     <div className='inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6 border border-blue-200'>
                         Our World-Class Facility in Bhopal
                     </div>
-                    <h2 className='text-4xl sm:text-5xl font-bold text-gray-900 mb-6'>
-                        State-of-the-Art{' '}
+                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-6'>
+                        State of the Art{' '}
                         <span className='bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent'>
                             Medical Facilities
                         </span>
                     </h2>
-                    <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
+                    <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
                         Experience advanced fertility treatments at our{' '}
                         <strong>NABH accredited center in Bhopal</strong>.
                     </p>
@@ -57,7 +57,7 @@ export default function GallerySection({
                     whileInView='visible'
                     viewport={{ once: true, amount: 0.2 }}
                 >
-                    {galleryData.map((image, index) => (
+                    {gallery.map((image, index) => (
                         <motion.div
                             key={image.id}
                             variants={fadeUp}
@@ -161,7 +161,7 @@ export default function GallerySection({
                                         {selectedImage.category}
                                     </span>
                                     <span className='text-gray-500 text-sm'>
-                                        {currentIndex + 1} / {galleryData.length}
+                                        {currentIndex + 1} / {gallery.length}
                                     </span>
                                 </div>
                             </div>

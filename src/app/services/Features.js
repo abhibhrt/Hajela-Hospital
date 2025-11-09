@@ -8,8 +8,8 @@ export default function Features({ items = [] }) {
         <section className='py-16 bg-gradient-to-r from-pink-50 to-purple-50'>
             <div className='max-w-7xl mx-auto px-2 sm:px-2 lg:px-4'>
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.6 }} className='text-center mb-12'>
-                    <h2 className='text-3xl font-bold text-gray-900 mb-4'>why choose <span className='text-pink-500'>hajela hospital bhopal</span>?</h2>
-                    <p className='text-xl text-gray-600 max-w-2xl mx-auto'>leading fertility center in madhya pradesh with advanced technology and expert care by dr. supriya hajela</p>
+                    <h2 className='text-3xl font-bold text-gray-900 mb-4'>Why Choose <span className='text-pink-500'>Hajela Hospital Bhopal</span> ?</h2>
+                    <p className='text-lg text-gray-600 max-w-2xl mx-auto'>leading fertility center in madhya pradesh with advanced technology and expert care by dr. supriya hajela</p>
                 </motion.div>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>

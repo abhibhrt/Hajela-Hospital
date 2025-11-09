@@ -1,11 +1,11 @@
 'use client'
 
 import Hero from './Hero'
-import Stats from './Stats'
+import Stats from '../components/Stats'
 import AwardsGrid from './AwardsGrid'
 import Timeline from './Timeline'
 import LeadershipCertifications from './LeadershipCertifications'
-import { awards, leadership, certifications, stats } from '@/data/data-main';
+import { awards, leadership, certifications } from '@/data/data-main';
 
 // export const metadata = {
 //   title: 'Awards & Achievements | Dr. Supriya Hajela - Best IVF Specialist in Bhopal',
@@ -17,7 +17,7 @@ export default function AchievementsPage() {
   return (
     <main>
       <Hero />
-      <Stats items={stats} />
+      <Stats/>
       <AwardsGrid items={awards} />
       <Timeline items={awards} />
       <LeadershipCertifications leadership={leadership} certifications={certifications} />

@@ -7,8 +7,8 @@ export default function Timeline({ items = [] }) {
         <section className='py-16 bg-white'>
             <div className='max-w-6xl mx-auto px-2 sm:px-2 lg:px-4'>
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6 }} className='text-center mb-12'>
-                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-800 mb-4'>journey of <span className='text-yellow-500'>excellence</span></h2>
-                    <p className='text-xl text-gray-600'>continuous recognition and achievements over the years</p>
+                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-800 mb-4'>Journey of <span className='text-yellow-500'>Excellence</span></h2>
+                    <p className='text-lg text-gray-600'>continuous recognition and achievements over the years</p>
                 </motion.div>
 
                 <div className='relative'>
@@ -30,7 +30,7 @@ export default function Timeline({ items = [] }) {
                                         <div className='bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg border border-gray-100'>
                                             <div className='flex items-center space-x-3 mb-3'>
                                                 <div className={`w-10 h-10 bg-gradient-to-r ${award.color} rounded-full flex items-center justify-center`}>
-                                                    <award.icon className='text-white text-sm' />
+                                                    {award.icon}
                                                 </div>
                                                 <div>
                                                     <div className='text-yellow-500 font-bold'>{award.year}</div>

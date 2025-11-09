@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaBook, FaTimes, FaTrash } from 'react-icons/fa';
 import { useAlert } from '@/app/hooks/useAlert';
+import { formatDateTimeSafe } from '@/app/utils/dateFormat';
 
 export default function Story() {
   const [file, setFile] = useState(null);
@@ -11,6 +12,7 @@ export default function Story() {
   const [uploading, setUploading] = useState(false);
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { showAlert } = useAlert();
 
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
@@ -30,6 +32,7 @@ export default function Story() {
   };
 
   useEffect(() => {
+    setMounted(true);
     fetchStories();
   }, []);
 
@@ -222,10 +225,14 @@ export default function Story() {
 
                 <div className="text-xs text-gray-400 p-3">
                   expires on{' '}
-                  {new Date(story.expireAt).toLocaleString('en-IN', {
-                    dateStyle: 'medium',
-                    timeStyle: 'short',
-                  })}
+                  {mounted 
+                    ? formatDateTimeSafe(story.expireAt, {
+                        locale: 'en-IN',
+                        dateStyle: 'medium',
+                        timeStyle: 'short',
+                      }) || story.expireAt
+                    : ''
+                  }
                 </div>
               </div>
             ))}

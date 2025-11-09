@@ -3,12 +3,14 @@ import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { FaTrash, FaEdit, FaUpload, FaTimes } from 'react-icons/fa';
 import { useAlert } from '@/app/hooks/useAlert';
+import { formatDateSafe } from '@/app/utils/dateFormat';
 
 export default function Gallery() {
     const [photos, setPhotos] = useState([]);
     const [loading, setLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const { showAlert } = useAlert();
 
     const fileRef = useRef(null);
@@ -23,6 +25,7 @@ export default function Gallery() {
     const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
     useEffect(() => {
+        setMounted(true);
         const stored = localStorage.getItem('admin');
         if (stored) {
             try {
@@ -294,7 +297,7 @@ export default function Gallery() {
                                         </div>
                                     ) : (
                                         <div className="text-xs text-gray-400">
-                                            {new Date(photo.createdAt).toLocaleDateString()}
+                                            {mounted ? formatDateSafe(photo.createdAt) || photo.createdAt : ''}
                                         </div>
                                     )}
                                 </div>

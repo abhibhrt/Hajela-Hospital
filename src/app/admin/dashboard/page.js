@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FaBars, FaTimes, FaCalendarAlt, FaImages, FaBook, FaSignOutAlt, FaCog } from 'react-icons/fa';
 import Appointments from './sections/appointments';
 import Gallery from './sections/gallery';
@@ -8,6 +9,7 @@ import Story from './sections/stories';
 export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState('appointments');
+  const router = useRouter();
 
   const sections = {
     appointments: { icon: FaCalendarAlt, title: 'Appointments' },
@@ -16,8 +18,12 @@ export default function AdminDashboard() {
   };
 
   function handleLogout() {
-    localStorage.clear("admin");
-    window.location.reload();
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem("admin");
+      // Dispatch event to notify parent component
+      window.dispatchEvent(new Event('admin-logout'));
+      router.push('/admin');
+    }
   }
 
   const renderContent = () => {

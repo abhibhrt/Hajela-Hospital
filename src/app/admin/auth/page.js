@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import { FaUser, FaLock, FaEye, FaEyeSlash, FaSignInAlt } from 'react-icons/fa';
 import { useAlert } from '@/app/hooks/useAlert';
 
@@ -13,6 +14,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { showAlert } = useAlert();
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,8 +28,11 @@ export default function Login() {
 
       if (response.data?.success) {
         localStorage.setItem("admin", JSON.stringify(response.data));
+        // Dispatch custom event to notify parent component of login
+        window.dispatchEvent(new Event('admin-login'));
         showAlert("Login successful!", "success");
-        window.location.reload();
+        // Navigate to admin page which will detect the login and show dashboard
+        router.push('/admin');
       } else {
         showAlert(response.data?.message || "Invalid credentials", "error");
       }

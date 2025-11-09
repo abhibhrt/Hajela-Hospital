@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { FaClinicMedical } from 'react-icons/fa'
-import Image from 'next/image'
 
 const sectionVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
 
@@ -30,7 +29,7 @@ export default function Hero() {
                             in Bhopal
                         </h1>
 
-                        <p className='text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto'>
+                        <p className='text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto'>
                             comprehensive fertility treatments and reproductive healthcare services with cutting-edge technology at nabh accredited hajela hospital, bhopal. best ivf centre in madhya pradesh with 14+ years experience under dr. supriya hajela.
                         </p>
                     </motion.div>

@@ -62,7 +62,6 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* ✅ Logo */}
             <Link
               href="/"
               className="flex items-center space-x-3 group transition-all duration-300 hover:scale-105"
@@ -88,7 +87,6 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {links.map((link, index) => {
                 const IconComponent = link.icon;
@@ -110,7 +108,6 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Desktop Emergency Button */}
             <div className="hidden lg:flex items-center">
               <Link
                 href="/appointment"
@@ -121,7 +118,6 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -130,9 +126,9 @@ export default function Navbar() {
                 aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? (
-                  <FiX className="w-6 h-6 text-red-500 animate-spin" />
+                  <FiX className="w-6 h-6 text-red-500" />
                 ) : (
-                  <FiMenu className="w-6 h-6 text-blue-600 animate-bounce" />
+                  <FiMenu className="w-6 h-6 text-blue-600" />
                 )}
               </button>
             </div>
