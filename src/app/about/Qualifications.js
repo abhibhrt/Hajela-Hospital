@@ -19,7 +19,7 @@ export default function Qualifications({ items = [] }) {
             <div className='max-w-7xl mx-auto px-2 sm:px-2 lg:px-4 relative z-10'>
                 <motion.div className='text-center mb-12' initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.6 }}>
                     <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
-                        professional <span className='bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent'>qualifications</span>
+                        Professional <span className='bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent'>Qualifications</span>
                     </h2>
                     <p className='text-xl text-gray-700 max-w-3xl mx-auto'>comprehensive medical education and specialized training in reproductive medicine</p>
                 </motion.div>

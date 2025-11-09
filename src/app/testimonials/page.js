@@ -3,7 +3,7 @@
 import Hero from './Hero'
 import Stats from './Stats'
 import TestimonialsGrid from './TestimonialsGrid'
-import { stats, testimonials } from '@/data/testimonial'
+import { stats, testimonials } from '@/data/data-main'
 
 // export const metadata = {
 //   title: 'Testimonials | Patient Success Stories - Dr. Supriya Hajela',

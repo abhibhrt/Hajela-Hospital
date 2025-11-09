@@ -4,8 +4,8 @@ import StoryViewer from './components/storyview';
 import HeroSection from './home/hero-section';
 import ServicesSection from './home/services-section';
 import GallerySection from './home/gallery-section';
-import galleryData from '@/data/gallery';
-import { stats, services, features, schemaData } from '@/data/home';
+import {stats, specialFeatures, gallery, services } from '@/data/data-main';
+import { schemaData } from '@/data/data-meta';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -41,15 +41,15 @@ export default function Home() {
   };
 
   const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? galleryData.length - 1 : currentIndex - 1;
+    const newIndex = currentIndex === 0 ? gallery.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
-    setSelectedImage(galleryData[newIndex]);
+    setSelectedImage(gallery[newIndex]);
   };
 
   const goToNext = () => {
-    const newIndex = currentIndex === galleryData.length - 1 ? 0 : currentIndex + 1;
+    const newIndex = currentIndex === gallery.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-    setSelectedImage(galleryData[newIndex]);
+    setSelectedImage(gallery[newIndex]);
   };
 
   const handleKeyDown = e => {
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, i) => (
+            {specialFeatures.map((feature, i) => (
               <div
                 key={i}
                 className="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200 group transition-all duration-300"
@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       <GallerySection
-        galleryData={galleryData}
+        gallery={gallery}
         openLightbox={openLightbox}
         selectedImage={selectedImage}
         closeLightbox={closeLightbox}

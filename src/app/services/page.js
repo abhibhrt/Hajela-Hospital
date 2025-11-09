@@ -4,9 +4,7 @@ import Hero from './Hero.js'
 import Stats from './Stats.js'
 import Features from './Features.js'
 import ServicesGrid from './ServicesGrid.js'
-
-import services from '@/data/services.js'
-import { specialFeatures, stats } from '@/data/features'
+import { stats, specialFeatures, services } from '@/data/data-main';
 
 // export const metadata = {
 //   title:

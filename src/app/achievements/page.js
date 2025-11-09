@@ -5,8 +5,7 @@ import Stats from './Stats'
 import AwardsGrid from './AwardsGrid'
 import Timeline from './Timeline'
 import LeadershipCertifications from './LeadershipCertifications'
-// import CTA from './CTA'
-import { awards, leadership, certifications, stats } from '@/data/achievements'
+import { awards, leadership, certifications, stats } from '@/data/data-main';
 
 // export const metadata = {
 //   title: 'Awards & Achievements | Dr. Supriya Hajela - Best IVF Specialist in Bhopal',
@@ -22,7 +21,6 @@ export default function AchievementsPage() {
       <AwardsGrid items={awards} />
       <Timeline items={awards} />
       <LeadershipCertifications leadership={leadership} certifications={certifications} />
-      {/* <CTA /> */}
     </main>
   )
 }
