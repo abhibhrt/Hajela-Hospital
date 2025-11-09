@@ -65,10 +65,7 @@ export default function StoryViewer() {
     return () => clearTimeout(timerRef.current);
   }, [isOpen, currentIndex]);
 
-  if (stories.length === 0 || loading)
-    return (
-      <></>
-    );
+  if (stories.length === 0 || loading) return <></>;
 
   return (
     <>
@@ -109,7 +106,7 @@ export default function StoryViewer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 flex flex-col justify-center items-center z-50"
+            className="fixed inset-0 bg-black flex flex-col justify-center items-center z-50"
           >
             {/* close button */}
             <button
@@ -128,14 +125,14 @@ export default function StoryViewer() {
               ></div>
             </div>
 
-            {/* story content */}
+            {/* story content fullscreen */}
             <motion.div
               key={stories[currentIndex]?._id}
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="w-full max-w-md flex flex-col items-center justify-center"
+              className="relative w-full h-full flex items-center justify-center"
               onClick={nextStory}
             >
               {stories[currentIndex]?.resource_type === 'video' ? (
@@ -144,18 +141,18 @@ export default function StoryViewer() {
                   src={stories[currentIndex].url}
                   controls
                   autoPlay
-                  className="w-full rounded-lg max-h-[70vh] object-contain"
+                  className="w-full h-full object-cover"
                   onEnded={nextStory}
                 />
               ) : (
                 <img
                   src={stories[currentIndex].url}
                   alt="story"
-                  className="w-full rounded-lg max-h-[70vh] object-contain"
+                  className="w-full h-full object-cover"
                 />
               )}
 
-              <p className="text-white mt-4 text-center text-sm opacity-80">
+              <p className="absolute bottom-10 text-white text-center text-sm bg-black/40 px-4 py-2 rounded-md">
                 {stories[currentIndex]?.caption || ''}
               </p>
             </motion.div>
