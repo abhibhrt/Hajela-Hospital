@@ -132,7 +132,7 @@ export default function StoryViewer() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full h-full flex items-center justify-center"
+              className="relative w-full h-full flex items-center justify-center bg-black"
               onClick={nextStory}
             >
               {stories[currentIndex]?.resource_type === 'video' ? (
@@ -140,18 +140,17 @@ export default function StoryViewer() {
                   key={stories[currentIndex].url}
                   src={stories[currentIndex].url}
                   autoPlay
-                  muted
                   playsInline
                   disablePictureInPicture
                   controls={false}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                   onEnded={nextStory}
                 />
               ) : (
                 <img
                   src={stories[currentIndex].url}
                   alt="story"
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                 />
               )}
 
