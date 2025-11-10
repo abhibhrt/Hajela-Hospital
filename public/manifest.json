@@ -1,0 +1,18 @@
+{
+    "name": "Hajela Hospital - IVF & Fertility Center",
+    "short_name": "Hajela IVF",
+    "description": "NABH Accredited IVF & Fertility Center in Bhopal - Dr. Supriya Hajela",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#ffffff",
+    "theme_color": "#0066cc",
+    "icons": [
+        {
+            "src": "/logo.jpg",
+            "sizes": "48x48 72x72 96x96 144x144 192x192 256x256 512x512",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        }
+    ]
+}

@@ -182,7 +182,7 @@ export default function HeroSection({ refProp, stats }) {
                                 className='flex items-center justify-center text-blue-600 hover:text-blue-700 transition-colors'
                             >
                                 <FaMapMarkerAlt className='mr-2 text-base' />
-                                bhopal location
+                                Bhopal Location
                             </a>
                         </motion.div>
                     </motion.div>

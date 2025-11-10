@@ -69,7 +69,7 @@ export default function Navbar() {
             >
               <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
                 <Image
-                  src="/logo.jpeg"
+                  src="/logo.jpg"
                   alt="Logo"
                   width={48}
                   height={48}
