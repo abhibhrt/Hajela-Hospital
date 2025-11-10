@@ -91,12 +91,10 @@ export default function Page() {
 
   return (
     <>
-      {/* primary hospital schema */}
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
-      {/* breadcrumb schema */}
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}

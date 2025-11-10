@@ -14,7 +14,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { FiArrowRight, FiPhone as FiPhoneIcon } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import CTA from "./CTA";
 
 export default function Footer() {
@@ -47,17 +47,18 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white border-t border-gray-700 relative overflow-hidden">
-      <CTA/>
+      <CTA />
+
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-800 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-24 h-24 bg-teal-800 rounded-full animate-bounce delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-purple-800 rounded-full animate-ping opacity-20"></div>
-        <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-pink-800 rounded-full animate-pulse delay-500"></div>
+      <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-800 rounded-full animate-pulse max-w-full max-h-full"></div>
+        <div className="absolute bottom-20 right-20 w-24 h-24 bg-teal-800 rounded-full animate-bounce delay-1000 max-w-full max-h-full"></div>
+        <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-purple-800 rounded-full animate-ping opacity-20 max-w-full max-h-full"></div>
+        <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-pink-800 rounded-full animate-pulse delay-500 max-w-full max-h-full"></div>
       </div>
 
       {/* Medical Icons Pattern */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-1/4 animate-float">
           <FaHeart className="text-blue-500 text-4xl" />
         </div>
@@ -69,6 +70,7 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Section */}
@@ -79,15 +81,15 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
-                  Dr. Supriya Hajela
+                  dr. supriya hajela
                 </h3>
-                <p className="text-gray-300 mt-1 text-sm">IVF & Fertility Specialist</p>
+                <p className="text-gray-300 mt-1 text-sm">ivf & fertility specialist</p>
               </div>
             </Link>
 
             <p className="text-gray-300 leading-relaxed text-sm">
-              Award-winning IVF & Fertility Specialist with 14+ years of experience.
-              Director & IVF Coordinator at NABH Accredited Hajela Hospital, Bhopal.
+              award-winning ivf & fertility specialist with 14+ years of experience.  
+              director & ivf coordinator at nabh accredited hajela hospital, bhopal.
             </p>
 
             {/* Social Links */}
@@ -109,8 +111,8 @@ export default function Footer() {
             <div className="flex items-center space-x-3 bg-green-900/20 border border-green-700 rounded-xl p-4 mt-4 hover:scale-105 transition-transform duration-300 animate-fade-in">
               <FaShieldAlt className="text-green-500 text-xl flex-shrink-0" />
               <div>
-                <p className="text-green-500 font-semibold text-sm">NABH Accredited</p>
-                <p className="text-gray-300 text-xs">ART & Reproductive Centre</p>
+                <p className="text-green-500 font-semibold text-sm">nabh accredited</p>
+                <p className="text-gray-300 text-xs">art & reproductive centre</p>
               </div>
             </div>
           </div>
@@ -119,7 +121,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white flex items-center space-x-2">
               <FaStethoscope className="text-blue-500" />
-              <span>Quick Links</span>
+              <span>quick links</span>
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -141,7 +143,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white flex items-center space-x-2">
               <FaAward className="text-teal-400" />
-              <span>Our Services</span>
+              <span>our services</span>
             </h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
@@ -161,16 +163,16 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white flex items-center space-x-2">
               <FaEnvelope className="text-purple-500" />
-              <span>Contact Info</span>
+              <span>contact info</span>
             </h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3 group hover:translate-x-1 transition-transform duration-300 animate-fade-in">
                 <FaMapMarkerAlt className="text-blue-500 mt-1 flex-shrink-0 text-lg" />
                 <div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Hajela Hospital Geetanjali Complex<br />
-                    Kotra Sultanabad Bhopal, Madhya Pradesh<br />
-                    India - 462001
+                    hajela hospital geetanjali complex<br />
+                    kotra sultanabad bhopal, madhya pradesh<br />
+                    india - 462001
                   </p>
                 </div>
               </div>
@@ -181,7 +183,7 @@ export default function Footer() {
                   href="tel:9575052525"
                   className="text-gray-300 hover:text-blue-500 transition-colors duration-300 text-sm"
                 >
-                  +91 XXXXXXXXXX
+                  +91 xxxxxxxxxx
                 </a>
               </div>
 
@@ -201,14 +203,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-300 text-sm text-center md:text-left">
-            © {currentYear} Dr. Supriya Hajela | All Rights Reserved
+            © {currentYear} dr. supriya hajela | all rights reserved
           </div>
 
           <div className="flex items-center space-x-6 text-sm">
             {[
-              { name: "Privacy Policy", href: "/privacy-policy" },
-              { name: "Terms of Service", href: "/terms" },
-              { name: "Sitemap", href: "/sitemap" },
+              { name: "privacy policy", href: "/privacy-policy" },
+              { name: "terms of service", href: "/terms" },
+              { name: "sitemap", href: "/sitemap" },
             ].map((link, index) => (
               <Link
                 key={link.href}
@@ -225,9 +227,9 @@ export default function Footer() {
         {/* Trust Badges */}
         <div className="flex flex-wrap justify-center items-center gap-6 mt-8 pt-6 border-t border-gray-700">
           {[
-            { icon: FaShieldAlt, text: "NABH Accredited", color: "text-green-500" },
-            { icon: FaAward, text: "14+ Years Experience", color: "text-yellow-500" },
-            { icon: FaHeart, text: "17000+ Happy Families", color: "text-red-500" },
+            { icon: FaShieldAlt, text: "nabh accredited", color: "text-green-500" },
+            { icon: FaAward, text: "14+ years experience", color: "text-yellow-500" },
+            { icon: FaHeart, text: "17000+ happy families", color: "text-red-500" },
           ].map((badge, index) => (
             <div
               key={badge.text}
@@ -248,36 +250,36 @@ export default function Footer() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalOrganization",
-            name: "Dr. Supriya Hajela - Hajela Hospital",
+            name: "dr. supriya hajela - hajela hospital",
             url: "https://hajelahospital.com",
             logo: "https://hajelahospital.com/logo.png",
             description:
-              "NABH Accredited ART & Reproductive Centre in Bhopal offering IVF and fertility treatments",
+              "nabh accredited art & reproductive centre in bhopal offering ivf and fertility treatments",
             medicalSpecialty: [
-              "IVF",
-              "Fertility Treatment",
-              "Reproductive Medicine",
-              "IUI",
-              "Embryo Freezing",
+              "ivf",
+              "fertility treatment",
+              "reproductive medicine",
+              "iui",
+              "embryo freezing",
             ],
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Hajela Hospital",
-              addressLocality: "Bhopal",
-              addressRegion: "Madhya Pradesh",
+              streetAddress: "hajela hospital",
+              addressLocality: "bhopal",
+              addressRegion: "madhya pradesh",
               postalCode: "462001",
-              addressCountry: "India",
+              addressCountry: "india",
             },
-            telephone: "+91-XXXXXXXXXX",
+            telephone: "+91-xxxxxxxxxx",
             email: "info@hajelahospital.com",
             openingHours: ["Mo-Su 00:00-23:59"],
-            hasCredential: "NABH Accreditation",
+            hasCredential: "nabh accreditation",
             founder: {
               "@type": "Person",
-              name: "Dr. Supriya Hajela",
-              jobTitle: "IVF & Fertility Specialist",
+              name: "dr. supriya hajela",
+              jobTitle: "ivf & fertility specialist",
             },
-            areaServed: { "@type": "State", name: "Madhya Pradesh" },
+            areaServed: { "@type": "State", name: "madhya pradesh" },
             sameAs: [
               "https://www.facebook.com/hajelahospital",
               "https://www.instagram.com/hajelahospital",

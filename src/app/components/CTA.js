@@ -19,14 +19,14 @@ export default function CTA() {
                     <div className='flex flex-col sm:flex-row gap-4 w-full lg:w-auto'>
                         <Link
                             href='/appointment'
-                            className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-white text-red-600 font-bold rounded-xl shadow-2xl hover:scale-105 transition-all duration-300'
+                            className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-white text-red-600 font-bold rounded-xl shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer'
                         >
                             <FaCalendarCheck className='mr-3' />
                             Book Appointment
                         </Link>
                         <a
                             href='tel:+917551234567'
-                            className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-red-600 transition-all duration-300'
+                            className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-red-600 transition-all duration-300 cursor-pointer'
                         >
                             <FaPhoneAlt className='mr-3' />
                             Call Now
