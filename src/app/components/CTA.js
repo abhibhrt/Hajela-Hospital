@@ -25,7 +25,7 @@ export default function CTA() {
                             Book Appointment
                         </Link>
                         <a
-                            href='tel:+917551234567'
+                            href='tel:7777802361'
                             className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-red-600 transition-all duration-300 cursor-pointer'
                         >
                             <FaPhoneAlt className='mr-3' />

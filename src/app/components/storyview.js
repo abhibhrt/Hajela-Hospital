@@ -10,8 +10,10 @@ export default function StoryViewer() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [duration, setDuration] = useState(6000);
   const progressRef = useRef(null);
   const timerRef = useRef(null);
+  const videoRef = useRef(null);
   const { showAlert } = useAlert();
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
@@ -50,18 +52,41 @@ export default function StoryViewer() {
     }
   };
 
-  const startAutoProgress = () => {
+  const startAutoProgress = (customDuration = 6000) => {
     clearTimeout(timerRef.current);
-    if (stories[currentIndex]?.resource_type === 'video') return;
-    if (progressRef.current) progressRef.current.style.width = '0%';
-    setTimeout(() => {
-      if (progressRef.current) progressRef.current.style.width = '100%';
-    }, 50);
-    timerRef.current = setTimeout(() => nextStory(), 5000);
+    if (progressRef.current) {
+      progressRef.current.style.transition = 'none';
+      progressRef.current.style.width = '0%';
+      void progressRef.current.offsetWidth; // reflow to reset transition
+      progressRef.current.style.transition = `width ${customDuration}ms linear`;
+      progressRef.current.style.width = '100%';
+    }
+    timerRef.current = setTimeout(() => nextStory(), customDuration);
+  };
+
+  const handleVideoLoaded = () => {
+    if (videoRef.current) {
+      const vidDuration = videoRef.current.duration * 1000;
+      setDuration(vidDuration);
+      startAutoProgress(vidDuration);
+    }
   };
 
   useEffect(() => {
-    if (isOpen && stories.length > 0) startAutoProgress();
+    clearTimeout(timerRef.current);
+
+    if (!isOpen || stories.length === 0) return;
+
+    const currentStory = stories[currentIndex];
+    if (currentStory?.resource_type === 'video') {
+      if (videoRef.current?.readyState >= 1) {
+        handleVideoLoaded();
+      }
+    } else {
+      setDuration(6000);
+      startAutoProgress(6000);
+    }
+
     return () => clearTimeout(timerRef.current);
   }, [isOpen, currentIndex]);
 
@@ -69,95 +94,101 @@ export default function StoryViewer() {
 
   return (
     <>
-      <div className="flex gap-3 overflow-x-auto px-3 py-2">
+      {/* story preview list */}
+      <div className='flex gap-3 overflow-x-auto px-3 py-2'>
         {stories.map((story, idx) => (
           <div
             key={story._id}
-            className="flex-shrink-0 cursor-pointer relative group"
+            className='flex-shrink-0 cursor-pointer relative group'
             onClick={() => openStory(idx)}
           >
-            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-green-500">
+            <div className='w-20 h-20 rounded-full overflow-hidden border-2 border-green-500'>
               {story.resource_type === 'video' ? (
                 <video
                   src={story.url}
-                  className="object-cover w-full h-full"
+                  className='object-cover w-full h-full'
                   muted
                 />
               ) : (
                 <img
                   src={story.url}
-                  alt="story"
-                  className="object-cover w-full h-full"
+                  alt='story'
+                  className='object-cover w-full h-full'
                 />
               )}
             </div>
-            <p className="text-xs text-center text-gray-700 mt-1 line-clamp-1">
+            <p className='text-xs text-center text-gray-700 mt-1 line-clamp-1'>
               {story.caption || 'story'}
             </p>
           </div>
         ))}
       </div>
 
-      {/* fullscreen popup viewer */}
+      {/* fullscreen viewer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            key="overlay"
+            key='overlay'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black flex flex-col justify-center items-center z-50"
+            className='fixed inset-0 bg-black flex flex-col justify-center items-center z-[9999]'
           >
             {/* close button */}
             <button
               onClick={closeStory}
-              className="absolute top-4 right-4 text-white p-2 bg-black/40 rounded-full hover:bg-black/60"
-              title="close"
+              className='absolute top-4 right-4 text-white p-2 bg-black/40 rounded-full hover:bg-black/60 z-[10000]'
+              title='close'
             >
-              <FaTimes className="text-xl" />
+              <FaTimes className='text-xl' />
             </button>
 
-            {/* progress bar */}
-            <div className="absolute top-2 left-0 right-0 mx-4 h-1 bg-gray-600 rounded-full overflow-hidden">
-              <div
-                ref={progressRef}
-                className="h-full bg-green-500 transition-all duration-[5000ms] ease-linear w-0"
-              ></div>
-            </div>
-
-            {/* story content fullscreen */}
+            {/* story content */}
             <motion.div
               key={stories[currentIndex]?._id}
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full h-full flex items-center justify-center bg-black"
+              className='relative w-full h-full flex items-center justify-center bg-black'
               onClick={nextStory}
             >
               {stories[currentIndex]?.resource_type === 'video' ? (
                 <video
+                  ref={videoRef}
                   key={stories[currentIndex].url}
                   src={stories[currentIndex].url}
                   autoPlay
                   playsInline
                   disablePictureInPicture
                   controls={false}
-                  className="max-w-full max-h-full object-contain"
+                  muted
+                  className='max-w-full max-h-full object-contain'
                   onEnded={nextStory}
+                  onLoadedMetadata={handleVideoLoaded}
                 />
               ) : (
                 <img
                   src={stories[currentIndex].url}
-                  alt="story"
-                  className="max-w-full max-h-full object-contain"
+                  alt='story'
+                  className='max-w-full max-h-full object-contain'
                 />
               )}
 
-              <p className="absolute bottom-10 text-white text-center text-sm bg-black/40 px-4 py-2 rounded-md">
+              {/* caption */}
+              <p className='absolute bottom-16 text-white text-center text-sm bg-black/40 px-4 py-2 rounded-md'>
                 {stories[currentIndex]?.caption || ''}
               </p>
             </motion.div>
+
+            {/* progress bar moved to bottom */}
+            <div className='absolute bottom-0 left-0 right-0 mx-4 mb-3 h-1 bg-gray-700 rounded-full overflow-hidden z-[10001]'>
+              <div
+                ref={progressRef}
+                className='h-full bg-green-500 w-0'
+                style={{ transition: `width ${duration}ms linear` }}
+              ></div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

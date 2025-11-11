@@ -81,15 +81,15 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
-                  dr. supriya hajela
+                  Dr. Supriya Hajela
                 </h3>
-                <p className="text-gray-300 mt-1 text-sm">ivf & fertility specialist</p>
+                <p className="text-gray-300 mt-1 text-sm">IVF & Fertility Specialist</p>
               </div>
             </Link>
 
             <p className="text-gray-300 leading-relaxed text-sm">
-              award-winning ivf & fertility specialist with 14+ years of experience.  
-              director & ivf coordinator at nabh accredited hajela hospital, bhopal.
+              Award-winning ivf & fertility specialist with 14+ years of experience.  
+              director & ivf coordinator at nabh accredited hajela hospital, Bhopal.
             </p>
 
             {/* Social Links */}
@@ -111,8 +111,8 @@ export default function Footer() {
             <div className="flex items-center space-x-3 bg-green-900/20 border border-green-700 rounded-xl p-4 mt-4 hover:scale-105 transition-transform duration-300 animate-fade-in">
               <FaShieldAlt className="text-green-500 text-xl flex-shrink-0" />
               <div>
-                <p className="text-green-500 font-semibold text-sm">nabh accredited</p>
-                <p className="text-gray-300 text-xs">art & reproductive centre</p>
+                <p className="text-green-500 font-semibold text-sm">NABH Accredited</p>
+                <p className="text-gray-300 text-xs">Art & Reproductive Centre</p>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white flex items-center space-x-2">
               <FaStethoscope className="text-blue-500" />
-              <span>quick links</span>
+              <span>Quick Links</span>
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -143,7 +143,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white flex items-center space-x-2">
               <FaAward className="text-teal-400" />
-              <span>our services</span>
+              <span>Our Services</span>
             </h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
@@ -163,7 +163,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white flex items-center space-x-2">
               <FaEnvelope className="text-purple-500" />
-              <span>contact info</span>
+              <span>Contact Info</span>
             </h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3 group hover:translate-x-1 transition-transform duration-300 animate-fade-in">
@@ -180,10 +180,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3 group hover:translate-x-1 transition-transform duration-300 animate-fade-in delay-100">
                 <FaPhone className="text-teal-400 flex-shrink-0 text-lg" />
                 <a
-                  href="tel:9575052525"
+                  href="tel:7777802361"
                   className="text-gray-300 hover:text-blue-500 transition-colors duration-300 text-sm"
                 >
-                  +91 xxxxxxxxxx
+                  +91 7777802361
                 </a>
               </div>
 
@@ -193,7 +193,7 @@ export default function Footer() {
                   href="mailto:hajelahospital@ymail.com"
                   className="text-gray-300 hover:text-blue-500 transition-colors duration-300 text-sm"
                 >
-                  hajelahospital@ymail.com
+                  hajelahospital@gmail.com
                 </a>
               </div>
             </div>
@@ -203,14 +203,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-300 text-sm text-center md:text-left">
-            © {currentYear} dr. supriya hajela | all rights reserved
+            © {currentYear} Dr. Supriya Hajela | all rights reserved
           </div>
 
           <div className="flex items-center space-x-6 text-sm">
             {[
-              { name: "privacy policy", href: "/privacy-policy" },
-              { name: "terms of service", href: "/terms" },
-              { name: "sitemap", href: "/sitemap" },
+              { name: "Privacy Policy", href: "/privacy-policy" },
+              { name: "Terms of Service", href: "/terms" },
+              { name: "Sitemap", href: "/sitemap" },
             ].map((link, index) => (
               <Link
                 key={link.href}
@@ -227,9 +227,9 @@ export default function Footer() {
         {/* Trust Badges */}
         <div className="flex flex-wrap justify-center items-center gap-6 mt-8 pt-6 border-t border-gray-700">
           {[
-            { icon: FaShieldAlt, text: "nabh accredited", color: "text-green-500" },
-            { icon: FaAward, text: "14+ years experience", color: "text-yellow-500" },
-            { icon: FaHeart, text: "17000+ happy families", color: "text-red-500" },
+            { icon: FaShieldAlt, text: "NABH Accredited", color: "text-green-500" },
+            { icon: FaAward, text: "14+ Years Experience", color: "text-yellow-500" },
+            { icon: FaHeart, text: "17000+ Happy Families", color: "text-red-500" },
           ].map((badge, index) => (
             <div
               key={badge.text}

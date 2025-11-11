@@ -168,15 +168,15 @@ export default function Navbar() {
             })}
 
             <div className="pt-4 border-t border-gray-200 space-y-3">
-              <Link
+              {/* <Link
                 href="/contact"
                 className="flex items-center justify-center space-x-2 w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <FiMail className="w-5 h-5" />
                 <span>Contact Us</span>
-              </Link>
-
+              </Link> */}
+ 
               <Link
                 href="/appointment"
                 className="flex items-center justify-center space-x-2 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-4 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-pulse"
