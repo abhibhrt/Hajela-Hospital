@@ -29,9 +29,11 @@ export default function Navbar() {
     { name: "About", href: "/about", icon: FiUser },
     { name: "Achievements", href: "/achievements", icon: FiAward },
     { name: "Book Appointment", href: "/appointment", icon: HiOutlineCalendar },
+    { name: "Contact", href: "/contact", icon: FiMail }, // 👈 YEH ADD KAREIN
+    
+    
     { name: "Admin Login", href: "/admin", icon: FaSignInAlt}
-  ];
-
+];
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     const handleResize = () =>

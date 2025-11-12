@@ -7,8 +7,12 @@ export default function Timeline({ items = [] }) {
         <section className='py-16 bg-white'>
             <div className='max-w-6xl mx-auto px-2 sm:px-2 lg:px-4'>
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6 }} className='text-center mb-12'>
-                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-800 mb-4'>Journey of <span className='text-yellow-500'>Excellence</span></h2>
-                    <p className='text-lg text-gray-600'>continuous recognition and achievements over the years</p>
+                   <h2 className='text-3xl sm:text-4xl font-bold text-gray-800 mb-4'>
+    Dr. Supriya Hajela Journey - Best IVF Specialist Career in Bhopal
+</h2>
+                    <p className='text-lg text-gray-600'>
+    Dr. Supriya Hajela - Best IVF Specialist in Bhopal journey from medical education to becoming award-winning fertility doctor at Hajela Hospital.
+</p>
                 </motion.div>
 
                 <div className='relative'>

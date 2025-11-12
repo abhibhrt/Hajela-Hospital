@@ -14,15 +14,12 @@ export default function Expertise({ items = [] }) {
                     viewport={{ once: true, amount: 0.18 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
-                        Fertility Treatments &{' '}
-                        <span className='bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent'>
-                            Specialized Services
-                        </span>
-                    </h2>
+                   <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
+    IVF Treatments in Bhopal | Fertility Services by Dr. Supriya Hajela
+</h2>
                     <p className='text-lg text-gray-700 max-w-3xl mx-auto'>
-                        comprehensive services in reproductive medicine at hajela hospital
-                    </p>
+    Best IVF treatments in Bhopal by Dr. Supriya Hajela - Advanced Fertility Services including IVF, ICSI, IUI, Egg Freezing, PGT and Reproductive Medicine at Hajela Hospital.
+</p>
                 </motion.div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>

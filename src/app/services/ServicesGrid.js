@@ -8,8 +8,12 @@ export default function ServicesGrid({ items = [] }) {
         <section className='py-16 bg-white'>
             <div className='max-w-7xl mx-auto px-2 sm:px-2 lg:px-4'>
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.6 }} className='text-center mb-12'>
-                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>Comprehensive <span className='text-pink-500'>Fertility Treatments in Bhopal</span></h2>
-                    <p className='text-lg text-gray-600 max-w-3xl mx-auto'>state-of-the-art reproductive medicine services with personalized care plans and the latest medical technology</p>
+<h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
+    Best IVF & Fertility Treatments in Bhopal | 85% Success Rate | Hajela Hospital
+</h2>
+                    <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
+    Best IVF & Fertility Treatments in Bhopal by Dr. Supriya Hajela. Advanced reproductive medicine with 85% success rate at NABH accredited Hajela Hospital - Top IVF Center in Madhya Pradesh.
+</p>
                 </motion.div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -44,7 +48,9 @@ export default function ServicesGrid({ items = [] }) {
                             </div>
 
                             <div className='mt-6 pt-4 border-t border-gray-200'>
-                                <Link href={`/info/${service.url}`} className='text-pink-500 text-sm font-semibold hover:underline group-hover:translate-x-1 transition-transform duration-300'>learn more →</Link>
+                               <Link href={`/services/${service.url}`} className='text-pink-500 text-sm font-semibold hover:underline group-hover:translate-x-1 transition-transform duration-300' title={`Learn more about ${service.title} in Bhopal`}>
+    Learn More About {service.title} in Bhopal →
+</Link>
                             </div>
 
                             <div className='absolute inset-0 bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10' />

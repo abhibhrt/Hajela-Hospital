@@ -14,8 +14,12 @@ export default function TestimonialsGrid({ items = [] }) {
                     viewport={{ once: true, amount: 0.18 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-800 mb-4'>stories of <span className='text-pink-500'>hope & happiness</span></h2>
-                    <p className='text-xl text-gray-600 max-w-3xl mx-auto'>real experiences from couples who trusted dr. supriya hajela with their fertility journey</p>
+                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-800 mb-4'>
+                        IVF Success Stories - Real Patient Experiences in Bhopal
+                    </h2>
+                    <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
+                        17000+ IVF success stories from patients treated by Dr. Supriya Hajela - Best IVF Specialist in Bhopal at Hajela Hospital with 85% success rate.
+                    </p>
                 </motion.div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>

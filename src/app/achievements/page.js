@@ -1,32 +1,29 @@
 import AchievementsPage from './AchievementsPage'
 
 export const metadata = {
-  title: 'Awards & Achievements | Dr. Supriya Hajela - IVF Specialist in Bhopal',
-  description:
-    'Explore the awards and recognitions of Dr. Supriya Hajela, a leading IVF & Fertility Specialist at Hajela Hospital Bhopal. Honored for excellence in reproductive medicine and fertility care across India.',
+  title: 'Dr. Supriya Hajela Awards - Best IVF Specialist Achievements in Bhopal | Hajela Hospital',
+  description: 'Dr. Supriya Hajela - Award winning Best IVF Specialist in Bhopal with national & international recognition. Best IVF Doctor awards at Hajela Hospital - 14+ years experience, 17000+ IVF cycles success.',
   alternates: { canonical: 'https://www.supriyahajela.in/achievements' },
   openGraph: {
-    title: 'Awards & Achievements - Dr. Supriya Hajela | Hajela Hospital Bhopal',
-    description:
-      'Recognitions, honors, and career milestones of Dr. Supriya Hajela – Best IVF & Fertility Doctor in Bhopal.',
+    title: 'Dr. Supriya Hajela Awards - Best IVF Specialist Achievements in Bhopal',
+    description: 'Dr. Supriya Hajela - Best IVF Doctor in Bhopal awarded nationally and internationally for excellence in reproductive medicine at Hajela Hospital.',
     url: 'https://www.supriyahajela.in/achievements',
     type: 'profile',
-    siteName: 'Hajela Hospital - IVF & Fertility Center Bhopal',
+    siteName: 'Hajela Hospital - Best IVF Center in Bhopal',
     locale: 'en_IN',
     images: [
       {
         url: '/logo.jpg',
         width: 1200,
         height: 630,
-        alt: 'Dr. Supriya Hajela Awards - Hajela Hospital Bhopal',
+        alt: 'Dr. Supriya Hajela - Best IVF Specialist Awards in Bhopal | Hajela Hospital',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dr. Supriya Hajela - Awards & Achievements | Hajela Hospital Bhopal',
-    description:
-      'Celebrating the accomplishments of Dr. Supriya Hajela, Bhopal’s renowned IVF & Fertility Specialist.',
+    title: 'Dr. Supriya Hajela - Best IVF Specialist Awards & Achievements in Bhopal',
+    description: 'Award winning Best IVF Doctor in Bhopal - Dr. Supriya Hajela recognized nationally and internationally for fertility treatment excellence.',
     creator: '@HajelaHospital',
     images: ['/logo.jpg'],
   },
@@ -35,22 +32,31 @@ export const metadata = {
 export default function Page() {
   const achievementsJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Dr. Supriya Hajela',
-    jobTitle: 'IVF & Fertility Specialist',
+    '@type': 'Physician',
+    name: 'Dr. Supriya Hajela - Best IVF Specialist in Bhopal',
+    jobTitle: 'Best IVF & Fertility Specialist',
     worksFor: {
       '@type': 'MedicalOrganization',
-      name: 'Hajela Hospital - IVF & Fertility Center',
+      name: 'Hajela Hospital - Best IVF Center in Bhopal',
       url: 'https://www.supriyahajela.in',
     },
     image: 'https://www.supriyahajela.in/logo.jpg',
     award: [
-      'Dr. Stya Paul Award for Clinical Excellence',
-      'International Best Researcher Award 2024',
-      'Dr. Subhash Mukopadhaya Award 2024',
+      'Best IVF Doctor in Bhopal - Young Achiever Award 2025',
+      'Best IVF Specialist - Dr. Stya Paul Award 2024',
+      'Best IVF Researcher - International Award 2024',
+      'Best Fertility Specialist - Dr Subhash Mukopadhaya Award 2024',
+      'Best IVF Center in Bhopal - Six Sigma Award 2024',
     ],
-    description:
-      'Dr. Supriya Hajela has been recognized nationally and internationally for excellence in reproductive medicine and patient care.',
+    description: 'Dr. Supriya Hajela - Best IVF Specialist in Bhopal awarded nationally and internationally for excellence in reproductive medicine at Hajela Hospital.',
+    knowsAbout: [
+      'IVF Treatment',
+      'ICSI Fertility', 
+      'IUI Procedure',
+      'Egg Freezing',
+      'PGT Genetic Testing',
+      'Reproductive Medicine'
+    ],
     sameAs: [
       'https://www.facebook.com/HajelaHospital',
       'https://www.instagram.com/hajelahospital',

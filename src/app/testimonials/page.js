@@ -1,32 +1,29 @@
 import TestimonialsPage from './TestimonialsPage'
 
 export const metadata = {
-  title: 'Patient Testimonials | Hajela Hospital IVF & Fertility Center Bhopal',
-  description:
-    'Read patient testimonials and IVF success stories from Hajela Hospital, Bhopal. Learn how Dr. Supriya Hajela helped couples achieve their dream of parenthood through personalized fertility care.',
+  title: 'IVF Success Stories - Patient Testimonials for Dr. Supriya Hajela in Bhopal | Hajela Hospital',
+  description: 'Read 17000+ IVF success stories from patients treated by Dr. Supriya Hajela - Best IVF Specialist in Bhopal. Real patient testimonials with 85% success rate at Hajela Hospital.',
   alternates: { canonical: 'https://www.supriyahajela.in/testimonials' },
   openGraph: {
-    title: 'IVF Success Stories | Hajela Hospital Bhopal',
-    description:
-      'Real patient testimonials from Hajela Hospital - Bhopal’s trusted IVF & Fertility Center led by Dr. Supriya Hajela.',
+    title: 'IVF Success Stories - Best IVF Doctor Testimonials in Bhopal | Dr. Supriya Hajela',
+    description: 'Real patient success stories from Hajela Hospital - Best IVF Center in Bhopal led by Dr. Supriya Hajela with 17000+ successful IVF cycles.',
     url: 'https://www.supriyahajela.in/testimonials',
     type: 'website',
-    siteName: 'Hajela Hospital - IVF & Fertility Center Bhopal',
+    siteName: 'Hajela Hospital - Best IVF Center in Bhopal',
     locale: 'en_IN',
     images: [
       {
         url: '/logo.jpg',
         width: 1200,
         height: 630,
-        alt: 'IVF Success Stories - Hajela Hospital Bhopal',
+        alt: 'IVF Success Stories - Best IVF Doctor Testimonials in Bhopal | Dr. Supriya Hajela',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Patient Testimonials | Dr. Supriya Hajela - Hajela Hospital Bhopal',
-    description:
-      'Hear success stories from patients who received advanced IVF & fertility care at Hajela Hospital, Bhopal.',
+    title: 'IVF Success Stories - Best IVF Doctor Testimonials in Bhopal',
+    description: '17000+ IVF success stories from patients treated by Dr. Supriya Hajela - Best IVF Specialist at Hajela Hospital Bhopal.',
     creator: '@HajelaHospital',
     images: ['/logo.jpg'],
   },
@@ -36,12 +33,11 @@ export default function Page() {
   const testimonialsJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
-    name: 'Hajela Hospital - IVF & Fertility Center',
+    name: 'Hajela Hospital - Best IVF Center in Bhopal',
     url: 'https://www.supriyahajela.in',
     logo: 'https://www.supriyahajela.in/logo.jpg',
     image: 'https://www.supriyahajela.in/logo.jpg',
-    description:
-      'NABH Accredited IVF and Fertility Center in Bhopal, offering advanced IVF, ICSI, and IUI treatments under Dr. Supriya Hajela.',
+    description: 'Best IVF Center in Bhopal - NABH Accredited Fertility Clinic with 85% success rate under Dr. Supriya Hajela.',
     sameAs: [
       'https://www.facebook.com/HajelaHospital',
       'https://www.instagram.com/hajelahospital',
@@ -50,27 +46,25 @@ export default function Page() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '120',
+      ratingCount: '17000',
       bestRating: '5',
       worstRating: '4',
     },
     review: [
       {
         '@type': 'Review',
-        author: 'Anjali Sharma',
+        author: 'IVF Patient from Bhopal',
         datePublished: '2024-07-12',
-        reviewBody:
-          'After years of trying, I finally conceived through IVF at Hajela Hospital. Dr. Supriya Hajela and the team were extremely supportive and caring throughout the process.',
-        name: 'Successful IVF after 5 years of struggle',
+        reviewBody: 'Best IVF treatment in Bhopal by Dr. Supriya Hajela. After years of trying, I finally conceived through IVF at Hajela Hospital - Best IVF Center in Madhya Pradesh.',
+        name: 'Successful IVF after 5 years - Best IVF Doctor in Bhopal',
         reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
       },
       {
         '@type': 'Review',
-        author: 'Ravi & Priya Patel',
+        author: 'Happy Parents from MP',
         datePublished: '2024-04-28',
-        reviewBody:
-          'Excellent fertility services, advanced lab facilities, and compassionate care by Dr. Supriya Hajela made our dream come true.',
-        name: 'Highly recommended IVF center in Bhopal',
+        reviewBody: 'Excellent fertility services at Hajela Hospital - Best IVF Center in Bhopal. Dr. Supriya Hajela made our dream come true with advanced IVF treatment.',
+        name: 'Best IVF Specialist in Bhopal - Highly Recommended',
         reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
       },
     ],

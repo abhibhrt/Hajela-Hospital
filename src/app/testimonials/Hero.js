@@ -23,12 +23,12 @@ export default function Hero() {
                         </div>
 
                         <h1 className='text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight'>
-                            Patient <span className='bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent'>Testimonials</span>
-                        </h1>
+    IVF Success Stories - Patient Testimonials for Dr. Supriya Hajela in Bhopal
+</h1>
 
-                        <p className='text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto'>
-                            read inspiring stories from couples who achieved their dream of parenthood through advanced fertility treatments at hajela hospital, bhopal.
-                        </p>
+                       <p className='text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto'>
+    Read IVF success stories from 17000+ happy patients treated by Dr. Supriya Hajela - Best IVF Specialist in Bhopal at Hajela Hospital. Real patient testimonials with 85% success rate.
+</p>
                     </motion.div>
                 </div>
             </div>

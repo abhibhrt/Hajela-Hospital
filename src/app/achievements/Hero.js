@@ -23,14 +23,14 @@ export default function Hero() {
                             <FaTrophy className='mr-2' /> AWARD-WINNING IVF SPECIALIST
                         </div>
                         <h1 className='text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight'>
-                            <span className='bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent'>Award-Winning</span> Excellence in IVF & Fertility Care
-                        </h1>
+    Dr. Supriya Hajela Awards - Best IVF Specialist in Bhopal | Award-Winning Excellence
+</h1>
                         <p className='text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8'>
-                            Dr. Supriya Hajela — recognized nationally and internationally for outstanding contributions to reproductive medicine, IVF treatment excellence, and groundbreaking research in fertility care.
-                        </p>
-                        <Link href='/appointment' className='inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'>
-                            <FaAward className='mr-3' /> Consult Award-Winning Specialist
-                        </Link>
+    Dr. Supriya Hajela - Best IVF Specialist in Bhopal awarded nationally and internationally for IVF treatment excellence at Hajela Hospital. 14+ years experience with 17000+ successful IVF cycles in Madhya Pradesh.
+</p>
+                       <Link href='/appointment' className='inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300' title='Book Appointment with Best IVF Doctor in Bhopal'>
+    <FaAward className='mr-3' /> Consult Best IVF Specialist in Bhopal
+</Link>
                     </motion.div>
                 </div>
             </div>

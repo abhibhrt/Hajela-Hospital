@@ -23,15 +23,13 @@ export default function Hero() {
                             BEST FERTILITY CENTRE IN BHOPAL
                         </div>
 
-                        <h1 className='text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight mb-6'>
-                            Best
-                            <span className='bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent'> IVF & Fertility Treatments </span>
-                            in Bhopal
-                        </h1>
+                       <h1 className='text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight mb-6'>
+    Best IVF Treatment in Bhopal | 85% Success Rate | Dr. Supriya Hajela
+</h1>
 
                         <p className='text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto'>
-                            comprehensive fertility treatments and reproductive healthcare services with cutting-edge technology at nabh accredited hajela hospital, bhopal. best ivf centre in madhya pradesh with 14+ years experience under dr. supriya hajela.
-                        </p>
+    Best IVF Treatment in Bhopal with 85% success rate at Hajela Hospital. Dr. Supriya Hajela - Best IVF Specialist in Bhopal offers advanced IVF, ICSI, IUI, Egg Freezing with NABH accreditation. 17000+ successful IVF cycles in Madhya Pradesh.
+</p>
                     </motion.div>
                 </div>
             </div>

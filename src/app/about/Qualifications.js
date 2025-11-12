@@ -13,15 +13,13 @@ export default function Qualifications({ items = [] }) {
                     viewport={{ once: true, amount: 0.18 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
-                        Professional{' '}
-                        <span className='bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent'>
-                            Qualifications
-                        </span>
-                    </h2>
+                    {/* OPTIMIZED */}
+<h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
+    Dr. Supriya Hajela Qualifications | Best IVF Specialist Education & Training
+</h2>
                     <p className='text-lg text-gray-700 max-w-3xl mx-auto'>
-                        comprehensive medical education and specialized training in reproductive medicine
-                    </p>
+    Dr. Supriya Hajela's medical qualifications - MBBS, MS, FICOG with specialized training in IVF and Reproductive Medicine. Best qualified IVF doctor in Bhopal with international certifications.
+</p>
                 </motion.div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>

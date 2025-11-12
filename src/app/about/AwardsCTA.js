@@ -11,8 +11,12 @@ export default function AwardsCTA({ awards = [] }) {
             <section className='py-16 bg-gray-50 relative overflow-hidden'>
                 <div className='max-w-7xl mx-auto px-2 sm:px-2 lg:px-4 relative z-10'>
                     <motion.div className='text-center mb-12' initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.6 }}>
-                        <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>Awards &amp; <span className='bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent'>Recognition</span></h2>
-                        <p className='text-lg text-gray-700 max-w-3xl mx-auto'>national and international recognition for excellence in reproductive medicine</p>
+                       <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-4'>
+    Dr. Supriya Hajela Awards | Best IVF Doctor Recognition in Bhopal
+</h2>
+                        <p className='text-lg text-gray-700 max-w-3xl mx-auto'>
+    Dr. Supriya Hajela - Award winning IVF Specialist in Bhopal recognized nationally for excellence in Fertility Treatments and Reproductive Medicine at Hajela Hospital.
+</p>
                     </motion.div>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                         {awards.map((award, index) => {
@@ -50,9 +54,9 @@ export default function AwardsCTA({ awards = [] }) {
                     <div className='bg-white rounded-2xl p-4 shadow-lg border border-gray-200'>
                         <FaHandHoldingHeart className='text-5xl text-blue-600 mx-auto mb-6' />
                         <h2 className='text-3xl font-bold text-gray-900 mb-6'>My Mission &amp; Treatment Philosophy</h2>
-                        <p className='text-lg text-gray-700 leading-relaxed mb-6'>
-                            every couple deserves the joy of parenthood. we provide compassionate, evidence-based reproductive care using the latest advancements in fertility treatments. medical excellence combined with emotional support to guide you through your journey to parenthood.
-                        </p>
+                       <p className='text-lg text-gray-700 leading-relaxed mb-6'>
+    Dr. Supriya Hajela's mission - Every couple deserves parenthood. As the Best IVF Specialist in Bhopal, I provide compassionate fertility care with latest IVF technology at Hajela Hospital. Medical excellence with emotional support for your parenthood journey in Madhya Pradesh.
+</p>
                         <div className='text-right'>
                             <p className='text-blue-600 font-semibold'>- Dr. Supriya Hajela, IVF Specialist Bhopal</p>
                         </div>

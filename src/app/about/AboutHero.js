@@ -1,15 +1,12 @@
 // File: components/about/AboutHero.jsx
 'use client'
 
-
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaUserMd } from 'react-icons/fa'
 import Stats from '../components/Stats'
 
-
 const sectionVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
-
 
 export default function AboutHero() {
     return (
@@ -29,14 +26,12 @@ export default function AboutHero() {
                             BEST IVF SPECIALIST IN BHOPAL
                         </div>
 
-
                         <h1 className='text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight'>
-                            Dr. Supriya Hajela: <span className='bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent'>Best IVF Doctor</span> in Bhopal
+                            Dr. Supriya Hajela - Best IVF Specialist in Bhopal | 14+ Years Experience | Hajela Hospital
                         </h1>
 
-
-                        <p className='text-lg text-gray-700  max-w-2xl'>
-                            Renowned IVF and fertility specialist with extensive experience in assisted reproductive technology. Director and IVF coordinator at NABH accredited Hajela Hospital, Bhopal. Advanced IVF, ICSI, IUI treatments with proven outcomes.
+                        <p className='text-lg text-gray-700 max-w-2xl'>
+                            Dr. Supriya Hajela - Best IVF Specialist in Bhopal with 14+ years experience. Leading IVF Doctor at NABH Accredited Hajela Hospital offering advanced IVF, ICSI, IUI, Egg Freezing treatments with 85% success rate. Top Fertility Expert in Madhya Pradesh.
                         </p>
 
                         <Stats/>
@@ -51,7 +46,16 @@ export default function AboutHero() {
                     >
                         <div className='text-center space-y-4'>
                             <div className='w-60 h-60 mx-auto bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center shadow-2xl'>
-                                <Image src='/dr-image.png' alt='dr. supriya hajela photo' width={224} height={224} className='rounded-full border-4 border-white shadow-lg' />
+                                {/* Image with proper width and height */}
+                                <div className="w-56 h-56 relative">
+                                    <Image 
+                                        src='/dr-image.png' 
+                                        alt='Dr. Supriya Hajela - Best IVF Specialist in Bhopal | Hajela Hospital Fertility Doctor'
+                                        fill
+                                        className='rounded-full border-4 border-white shadow-lg object-cover'
+                                        sizes="(max-width: 224px) 100vw, 224px"
+                                    />
+                                </div>
                             </div>
                             <div className='space-y-2'>
                                 <h3 className='text-2xl font-bold text-gray-900'>Dr. Supriya Hajela</h3>
