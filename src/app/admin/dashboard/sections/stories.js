@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaBook, FaTimes, FaTrash } from 'react-icons/fa';
+import { FaCamera, FaTimes, FaTrash, FaPaperPlane, FaPlay } from 'react-icons/fa';
 import { useAlert } from '@/app/hooks/useAlert';
 import { formatDateTimeSafe } from '@/app/utils/dateFormat';
 
@@ -13,11 +13,11 @@ export default function Story() {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [selectedStory, setSelectedStory] = useState(null); // for full-screen view
   const { showAlert } = useAlert();
 
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
-  // fetch all active stories
   const fetchStories = async () => {
     setLoading(true);
     try {
@@ -41,6 +41,7 @@ export default function Story() {
     if (!selected) return;
     setFile(selected);
     setPreview(URL.createObjectURL(selected));
+    setCaption('');
   };
 
   const getToken = () => {
@@ -77,9 +78,7 @@ export default function Story() {
       );
 
       showAlert('story uploaded successfully', 'success');
-      setFile(null);
-      setPreview(null);
-      setCaption('');
+      resetSelection();
       setStories((prev) => [res.data, ...prev]);
     } catch (err) {
       console.error(err);
@@ -92,17 +91,18 @@ export default function Story() {
   const handleDelete = async (id) => {
     const token = getToken();
     if (!token) return showAlert('admin token missing', 'error');
-    if (!confirm('delete this story?')) return;
+    if (!window.confirm('Delete this story?')) return;
 
     try {
       await axios.delete(`${apiBase}/api/stories/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      showAlert('story deleted successfully', 'success');
+      showAlert('story deleted', 'success');
       setStories((prev) => prev.filter((s) => s._id !== id));
+      setSelectedStory(null); // close modal if open
     } catch (err) {
       console.error(err);
-      showAlert('failed to delete story', 'error');
+      showAlert('failed to delete', 'error');
     }
   };
 
@@ -112,133 +112,186 @@ export default function Story() {
     setCaption('');
   };
 
+  const openStory = (story) => {
+    setSelectedStory(story);
+  };
+
+  const closeStory = () => {
+    setSelectedStory(null);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 p-4 space-y-8">
-      {/* upload form */}
-      <div className="w-full max-w-md bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
-        <div className="flex items-center space-x-3 mb-4">
-          <FaBook className="text-green-500 text-xl" />
-          <h3 className="text-lg font-semibold text-gray-800">
-            Upload Story
-          </h3>
+    <div className="flex flex-col font-mono text-sm">
+      {/* Upload Section */}
+      <div className="flex-1 flex flex-col">
+        <div className="w-full mx-auto">
+          {!preview ? (
+            <div className="flex flex-col items-center justify-center w-full h-96">
+              <input
+                type="file"
+                accept="image/*,video/*"
+                onChange={handleFileChange}
+                className="hidden"
+                id="story-image-video"
+              />
+              <label htmlFor="story-image-video" className='cursor-pointer p-8 rounded-full flex justify-center items-center border-2 border-green-400 bg-white hover:bg-blue-100 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl'>
+                <FaCamera className="text-5xl text-green-600" />
+              </label>
+              <p className="text-xl font-semibold text-gray-800 mt-6">Tap to add story update</p>
+              <p className="text-sm text-gray-600 mt-2">Photo or video</p>
+            </div>
+          ) : (
+            <div className="bg-white shadow-lg overflow-hidden">
+              <div className="relative">
+                {file.type.startsWith('video/') ? (
+                  <video
+                    src={preview}
+                    controls
+                    className="w-full h-96 object-contain bg-black"
+                  />
+                ) : (
+                  <img
+                    src={preview}
+                    alt="preview"
+                    className="w-full h-96 object-contain bg-black"
+                  />
+                )}
+                <button
+                  onClick={resetSelection}
+                  className="absolute top-4 right-4 bg-white/90 p-2 rounded-full shadow-lg"
+                >
+                  <FaTimes className="text-gray-700" />
+                </button>
+              </div>
+
+              <div className="p-4 border-t">
+                <textarea
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
+                  placeholder="Add a caption..."
+                  className="w-full p-3 text-sm bg-gray-100 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 rounded-xl"
+                  rows={3}
+                />
+              </div>
+
+              <div className="p-4 border-t bg-gray-50 flex justify-end">
+                <button
+                  onClick={handleUpload}
+                  disabled={uploading}
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-full text-white font-medium transition-all ${uploading
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-green-500 cursor-pointer hover:bg-green-600 shadow-lg hover:shadow-xl'
+                    }`}
+                >
+                  <FaPaperPlane />
+                  <span>{uploading ? 'Sending...' : 'Send'}</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
+      </div>
 
-        <label className="block mb-2 text-sm font-medium text-gray-600 cursor-pointer">
-          select file (image / video)
-        </label>
-        <input
-          type="file"
-          accept="image/*,video/*"
-          onChange={handleFileChange}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent cursor-pointer"
-        />
+      {/* Active Stories Grid */}
+      <div className="bg-white border-t">
+        <div className="mx-auto p-4">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Active Story Updates</h3>
 
-        {preview && (
-          <div className="relative mb-4 rounded-lg overflow-hidden border border-gray-200">
-            {file.type.startsWith('video/') ? (
+          {loading ? (
+            <p className="text-gray-500">loading...</p>
+          ) : stories.length === 0 ? (
+            <p className="text-gray-500 text-center py-8">No story updates yet</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <div className="flex gap-4 p-2 min-w-max">
+                {stories.map((story) => (
+                  <div key={story._id} className="flex-shrink-0 relative">
+                    <button
+                      onClick={() => openStory(story)}
+                      className="relative group w-20 h-20 rounded-full overflow-hidden ring-4 ring-green-500 p-1 cursor-pointer hover:ring-green-600 transition-all"
+                    >
+                      <div className="w-full h-full rounded-full overflow-hidden">
+                        {story.resource_type === 'video' ? (
+                          <video
+                            src={story.url}
+                            className="w-full h-full object-cover"
+                            muted
+                          />
+                        ) : (
+                          <img
+                            src={story.url}
+                            alt={story.caption}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
+                      </div>
+                      {story.resource_type === 'video' && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="bg-black/50 rounded-full p-2">
+                            <FaPlay className='text-white text-xs' />
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(story._id);
+                      }}
+                      className="absolute -top-1 -right-1 bg-white p-1 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <FaTrash className="text-red-500 text-xs" />
+                    </button>
+                    <div className="text-center mt-1 text-xs text-gray-500">
+                      {mounted
+                        ? formatDateTimeSafe(story.createdAt, {
+                          timeStyle: 'short',
+                        }).replace(',', '')
+                        : ''}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Full-Screen Story Modal */}
+      {selectedStory && (
+        <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center p-4">
+          <button
+            onClick={closeStory}
+            className="absolute top-6 right-6 bg-white/90 p-3 rounded-full shadow-lg z-10"
+          >
+            <FaTimes className="text-gray-700 text-xl" />
+          </button>
+
+          <div className="flex-1 flex items-center justify-center max-w-lg w-full">
+            {selectedStory.resource_type === 'video' ? (
               <video
-                src={preview}
+                src={selectedStory.url}
                 controls
-                className="w-full h-56 object-cover bg-black"
+                autoPlay
+                className="max-h-full max-w-full object-contain"
               />
             ) : (
               <img
-                src={preview}
-                alt="preview"
-                className="w-full h-56 object-cover"
+                src={selectedStory.url}
+                alt={selectedStory.caption}
+                className="max-h-full max-w-full object-contain"
               />
             )}
-            <button
-              onClick={resetSelection}
-              className="absolute top-2 right-2 bg-black/60 text-white p-2 rounded-full hover:bg-black/80 transition"
-              title="remove file"
-            >
-              <FaTimes />
-            </button>
           </div>
-        )}
 
-        <label className="block mb-2 text-sm font-medium text-gray-600">
-          caption
-        </label>
-        <textarea
-          value={caption}
-          onChange={(e) => setCaption(e.target.value)}
-          className="w-full h-24 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
-          placeholder="enter a caption for your story..."
-        />
-
-        <button
-          onClick={handleUpload}
-          disabled={uploading}
-          className={`cursor-pointer mt-5 w-full bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium ${uploading ? 'opacity-70 cursor-not-allowed' : 'hover:scale-105'
-            }`}
-        >
-          {uploading ? 'uploading...' : 'upload story'}
-        </button>
-      </div>
-
-      {/* story preview section */}
-      <div className="w-full max-w-5xl">
-        <h3 className="text-xl font-semibold text-gray-800 mb-4">Active Stories</h3>
-
-        {loading ? (
-          <div className="text-gray-600 text-sm">loading stories...</div>
-        ) : stories.length === 0 ? (
-          <div className="bg-white p-6 rounded-xl shadow text-gray-600">
-            no active stories yet
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {stories.map((story) => (
-              <div
-                key={story._id}
-                className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 relative"
-              >
-                <div className="relative">
-                  {story.resource_type === 'video' ? (
-                    <video
-                      src={story.url}
-                      controls
-                      className="w-full h-56 object-cover bg-black"
-                    />
-                  ) : (
-                    <img
-                      src={story.url}
-                      alt={story.caption || 'story'}
-                      className="w-full h-56 object-cover"
-                    />
-                  )}
-
-                  <div className="absolute bottom-3 left-3 bg-black/60 text-white text-sm px-3 py-1 rounded-md">
-                    {story.caption || 'no caption'}
-                  </div>
-
-                  <button
-                    onClick={() => handleDelete(story._id)}
-                    title="delete story"
-                    className="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow cursor-pointer hover:bg-white"
-                  >
-                    <FaTrash className="text-red-500" />
-                  </button>
-                </div>
-
-                <div className="text-xs text-gray-400 p-3">
-                  expires on{' '}
-                  {mounted 
-                    ? formatDateTimeSafe(story.expireAt, {
-                        locale: 'en-IN',
-                        dateStyle: 'medium',
-                        timeStyle: 'short',
-                      }) || story.expireAt
-                    : ''
-                  }
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+          {/* Caption Below */}
+          {selectedStory.caption && (
+            <div className="text-white text-center p-6 text-lg font-medium max-w-lg">
+              {selectedStory.caption}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

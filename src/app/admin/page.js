@@ -17,11 +17,8 @@ export default function LoginPage() {
         setIsChecking(false);
       }
     };
-
-    // Check auth on mount
     checkAuth();
 
-    // Listen for custom login/logout events (same window/tab)
     const handleAdminLogin = () => {
       checkAuth();
     };
@@ -30,7 +27,6 @@ export default function LoginPage() {
       checkAuth();
     };
 
-    // Listen for storage changes (e.g., when login happens in another tab/window)
     const handleStorageChange = (e) => {
       if (e.key === 'admin') {
         checkAuth();
@@ -48,7 +44,6 @@ export default function LoginPage() {
     };
   }, []);
 
-  // Show loading state while checking auth
   if (isChecking) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">

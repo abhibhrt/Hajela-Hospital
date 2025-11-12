@@ -52,7 +52,7 @@ export default function HeroSection({ refProp, stats }) {
                             <div className='text-center space-y-6'>
                                 <div className='w-80 h-80 mx-auto bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center shadow-2xl relative'>
                                     <img
-                                        src='/dr-prof.png'
+                                        src='https://res.cloudinary.com/dzzsezfck/image/upload/v1762959971/dr-prof_h9hlib.png'
                                         alt='Dr. Supriya Hajela - Best IVF Specialist in Bhopal at NABH Accredited Hajela Hospital'
                                         className='w-76 h-76 rounded-full border-4 border-white shadow-lg object-cover'
                                     />

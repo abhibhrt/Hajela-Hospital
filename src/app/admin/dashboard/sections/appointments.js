@@ -86,7 +86,7 @@ export default function Appointments() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-2">
       {dates.map((date) => (
         <div key={date}>
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
@@ -105,7 +105,7 @@ export default function Appointments() {
                 <div
                   key={appt._id}
                   onClick={() => toggleExpand(appt._id)}
-                  className={`bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-[1.02] ${
+                  className={`bg-white p-3 rounded-xl shadow-lg cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-[1.02] ${
                     isOpen ? 'max-h-[400px]' : 'max-h-[110px]'
                   } overflow-hidden`}
                 >

@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FaBars, FaTimes, FaCalendarAlt, FaImages, FaBook, FaSignOutAlt, FaCog } from 'react-icons/fa';
+import { FaBars, FaTimes, FaCalendarAlt, FaImages, FaBook, FaSignOutAlt } from 'react-icons/fa';
 import Appointments from './sections/appointments';
 import Gallery from './sections/gallery';
 import Story from './sections/stories';
@@ -20,7 +20,6 @@ export default function AdminDashboard() {
   function handleLogout() {
     if (typeof window !== 'undefined') {
       localStorage.removeItem("admin");
-      // Dispatch event to notify parent component
       window.dispatchEvent(new Event('admin-logout'));
       router.push('/admin');
     }
@@ -37,14 +36,14 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 font-mono text-sm">
       {/* Sidebar */}
-      <div className={`bg-gradient-to-b from-gray-800 to-gray-900 text-white transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-15'}`}>
-        <div className="p-4 flex items-center justify-between">
+      <div className={`bg-gradient-to-b from-gray-800 to-gray-900 text-white transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-10'}`}>
+        <div className="p-3 flex items-center justify-between">
           {sidebarOpen && <h1 className="text-xl font-bold">Admin Panel</h1>}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="cursor-pointer p-2 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+            className="cursor-pointer rounded-lg hover:bg-gray-700 transition-colors duration-300"
           >
             {sidebarOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -55,23 +54,24 @@ export default function AdminDashboard() {
             <button
               key={key}
               onClick={() => setActiveSection(key)}
-              className={`cursor-pointer w-full flex items-center px-4 py-3 transition-all duration-300 ${activeSection === key
-                ? 'bg-blue-600 border-r-4 border-yellow-400'
-                : 'hover:bg-gray-700'
-                }`}
+              className={`cursor-pointer w-full flex items-center px-2 py-3 transition-all duration-300 text-left ${
+                activeSection === key
+                  ? 'bg-blue-600 border-r-4 border-yellow-400'
+                  : 'hover:bg-gray-700'
+              }`}
             >
               <Icon className="text-xl flex-shrink-0" />
               {sidebarOpen && <span className="ml-4 font-medium">{title}</span>}
             </button>
           ))}
         </nav>
-
-        <div className="absolute bottom-1 left-2 right-4">
-          <button onClick={handleLogout} className="cursor-pointer flex items-center px-4 py-3 text-red-400 hover:bg-gray-700 rounded-lg transition-colors duration-300">
-            <FaSignOutAlt />
-            {sidebarOpen && <span className="ml-4">Logout</span>}
-          </button>
-        </div>
+        <button 
+          onClick={handleLogout} 
+          className="cursor-pointer w-full text-left flex items-center px-2 py-3 text-red-400 hover:bg-gray-700 transition-colors duration-300"
+        >
+          <FaSignOutAlt className="text-2xl" />
+          {sidebarOpen && <span className="ml-3 font-medium">Logout</span>}
+        </button>
       </div>
 
       {/* Main Content */}
@@ -82,12 +82,14 @@ export default function AdminDashboard() {
               {sections[activeSection].title}
             </h1>
             <div className="flex items-center space-x-4">
-              <img src="/dr-image.png" alt="doctor-dp" className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold" />
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                <img src="https://res.cloudinary.com/dzzsezfck/image/upload/v1762959970/dr-image_hwlavi.png" alt="doctor-dp" className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold" />
+              </div>
             </div>
           </div>
         </header>
 
-        <main className="p-6">
+        <main>
           {renderContent()}
         </main>
       </div>
