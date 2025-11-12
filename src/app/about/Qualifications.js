@@ -18,7 +18,7 @@ export default function Qualifications({ items = [] }) {
     Dr. Supriya Hajela Qualifications | Best IVF Specialist Education & Training
 </h2>
                     <p className='text-lg text-gray-700 max-w-3xl mx-auto'>
-    Dr. Supriya Hajela's medical qualifications - MBBS, MS, FICOG with specialized training in IVF and Reproductive Medicine. Best qualified IVF doctor in Bhopal with international certifications.
+    Dr. Supriya Hajela&apos;s medical qualifications - MBBS, MS, FICOG with specialized training in IVF and Reproductive Medicine. Best qualified IVF doctor in Bhopal with international certifications.
 </p>
                 </motion.div>
 
