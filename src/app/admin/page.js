@@ -12,7 +12,6 @@ export default function LoginPage() {
     const checkAuth = () => {
       if (typeof window !== 'undefined') {
         const admin = localStorage.getItem("admin");
-        console.log("admin data from localStorage:", admin);
         setLoggedIn(!!admin);
         setIsChecking(false);
       }

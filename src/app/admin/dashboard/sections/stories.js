@@ -92,7 +92,7 @@ export default function Story() {
     const token = getToken();
     if (!token) return showAlert('admin token missing', 'error');
     if (!window.confirm('Delete this story?')) return;
-
+    closeStory();
     try {
       await axios.delete(`${apiBase}/api/stories/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -233,15 +233,6 @@ export default function Story() {
                         </div>
                       )}
                     </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(story._id);
-                      }}
-                      className="absolute -top-1 -right-1 bg-white p-1 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <FaTrash className="text-red-500 text-xs" />
-                    </button>
                     <div className="text-center mt-1 text-xs text-gray-500">
                       {mounted
                         ? formatDateTimeSafe(story.createdAt, {
@@ -260,18 +251,28 @@ export default function Story() {
       {/* Full-Screen Story Modal */}
       {selectedStory && (
         <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center p-4">
-          <button
-            onClick={closeStory}
-            className="absolute top-6 right-6 bg-white/90 p-3 rounded-full shadow-lg z-10"
-          >
-            <FaTimes className="text-gray-700 text-xl" />
-          </button>
+          <div className="w-full absolute bottom-18 flex flex-row justify-between z-52 p-3">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(selectedStory._id);
+              }}
+              className="bg-white/30 p-2 rounded-full shadow-lg z-10 cursor-pointer"
+            >
+              <FaTrash className="text-red-700 text-xl" />
+            </button>
+            <button
+              onClick={closeStory}
+              className="bg-white/30 p-2 rounded-full shadow-lg z-10 cursor-pointer"
+            >
+              <FaTimes className="text-gray-300 text-xl" />
+            </button>
+          </div>
 
-          <div className="flex-1 flex items-center justify-center max-w-lg w-full">
+          <div className="flex-1 flex items-center justify-center w-full">
             {selectedStory.resource_type === 'video' ? (
               <video
                 src={selectedStory.url}
-                controls
                 autoPlay
                 className="max-h-full max-w-full object-contain"
               />
@@ -286,7 +287,7 @@ export default function Story() {
 
           {/* Caption Below */}
           {selectedStory.caption && (
-            <div className="text-white text-center p-6 text-lg font-medium max-w-lg">
+            <div className="absolute bottom-0 bg-gray-950/70 z-51 text-white text-center p-2 pb-10 text-lg font-medium w-full">
               {selectedStory.caption}
             </div>
           )}

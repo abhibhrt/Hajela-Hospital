@@ -48,7 +48,7 @@ export default function HeroSection({ refProp, stats }) {
                         viewport={{ once: true, amount: 0.3 }}
                         variants={fadeUp}
                     >
-                        <div className='bg-white rounded-2xl shadow-2xl p-6 transition-all duration-300 flex flex-col items-center'>
+                        <div className='p-6 transition-all duration-300 flex flex-col items-center'>
                             <div className='text-center space-y-6'>
                                 <div className='w-80 h-80 mx-auto bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center shadow-2xl relative'>
                                     <img
@@ -68,7 +68,7 @@ export default function HeroSection({ refProp, stats }) {
                                     <h3 className='text-2xl font-bold text-gray-900 bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent'>
                                         Your Journey to Parenthood Starts Here
                                     </h3>
-                                    <p className='text-gray-600 mt-2 text-lg'>trusted ivf care in bhopal</p>
+                                    <p className='text-gray-600 mt-2 text-lg'>Trusted IVF Care in Bhopal</p>
                                 </div>
                             </div>
                         </div>

@@ -14,10 +14,12 @@ export default function Gallery() {
     const { showAlert } = useAlert();
 
     const fileRef = useRef(null);
+    const [category, setCategory] = useState('');
     const [caption, setCaption] = useState('');
     const [description, setDescription] = useState('');
 
     const [editingId, setEditingId] = useState(null);
+    const [editCategory, setEditCategory] = useState('');
     const [editCaption, setEditCaption] = useState('');
     const [editDescription, setEditDescription] = useState('');
     const [savingEditId, setSavingEditId] = useState(null);
@@ -73,6 +75,7 @@ export default function Gallery() {
 
         const form = new FormData();
         form.append('file', fileRef.current.files[0]);
+        form.append('category', category);
         form.append('caption', caption);
         form.append('description', description);
 
@@ -87,6 +90,7 @@ export default function Gallery() {
             });
             setPhotos((prev) => [res.data, ...prev]);
             fileRef.current.value = '';
+            setCategory('');
             setCaption('');
             setDescription('');
             showAlert('photo uploaded successfully', 'success');
@@ -99,12 +103,14 @@ export default function Gallery() {
 
     const startEdit = (photo) => {
         setEditingId(photo._id);
+        setEditCategory(photo.category || '');
         setEditCaption(photo.caption || '');
         setEditDescription(photo.description || '');
     };
 
     const cancelEdit = () => {
         setEditingId(null);
+        setEditCategory('');
         setEditCaption('');
         setEditDescription('');
     };
@@ -114,7 +120,7 @@ export default function Gallery() {
         try {
             const res = await axios.put(
                 `${apiBase}/api/gallery/${id}`,
-                { caption: editCaption, description: editDescription },
+                { category: editCategory, caption: editCaption, description: editDescription },
                 { headers: { ...getAuthHeaders() } }
             );
             setPhotos((prev) => prev.map((p) => (p._id === id ? res.data : p)));
@@ -161,6 +167,16 @@ export default function Gallery() {
                         </label>
 
                         <div>
+                            <label className="text-xs text-gray-600 mb-1 block">category</label>
+                            <input
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                placeholder="category"
+                                className="w-full rounded-md border px-3 py-2 text-sm"
+                            />
+                        </div>
+
+                        <div>
                             <label className="text-xs text-gray-600 mb-1 block">caption</label>
                             <input
                                 value={caption}
@@ -195,6 +211,7 @@ export default function Gallery() {
                             type="button"
                             onClick={() => {
                                 fileRef.current.value = '';
+                                setCategory('');
                                 setCaption('');
                                 setDescription('');
                             }}
@@ -228,6 +245,9 @@ export default function Gallery() {
                                         className="w-full h-48 object-cover"
                                         loading="lazy"
                                     />
+                                    <div className="absolute left-3 top-3 bg-green-900 text-white px-3 py-1 rounded-full text-xs">
+                                        {photo.category || 'uncategorised'}
+                                    </div>
                                     <div className="absolute left-3 bottom-3 bg-black/50 text-white px-3 py-1 rounded-md text-sm">
                                         {photo.caption || 'untitled'}
                                     </div>
@@ -266,6 +286,12 @@ export default function Gallery() {
 
                                     {editingId === photo._id ? (
                                         <div className="mt-2 space-y-2">
+                                            <input
+                                                value={editCategory}
+                                                onChange={(e) => setEditCategory(e.target.value)}
+                                                placeholder="category"
+                                                className="w-full rounded-md border px-2 py-1 text-sm"
+                                            />
                                             <input
                                                 value={editCaption}
                                                 onChange={(e) => setEditCaption(e.target.value)}

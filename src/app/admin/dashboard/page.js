@@ -7,7 +7,7 @@ import Gallery from './sections/gallery';
 import Story from './sections/stories';
 
 export default function AdminDashboard() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('appointments');
   const router = useRouter();
 
@@ -18,6 +18,7 @@ export default function AdminDashboard() {
   };
 
   function handleLogout() {
+    if (!window.confirm('Do you want to logout?')) return;
     if (typeof window !== 'undefined') {
       localStorage.removeItem("admin");
       window.dispatchEvent(new Event('admin-logout'));
@@ -39,11 +40,11 @@ export default function AdminDashboard() {
     <div className="flex h-screen bg-gray-50 font-mono text-sm">
       {/* Sidebar */}
       <div className={`bg-gradient-to-b from-gray-800 to-gray-900 text-white transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-10'}`}>
-        <div className="p-3 flex items-center justify-between">
+        <div className="px-2 py-4 flex items-center justify-between">
           {sidebarOpen && <h1 className="text-xl font-bold">Admin Panel</h1>}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="cursor-pointer rounded-lg hover:bg-gray-700 transition-colors duration-300"
+            className="cursor-pointer text-xl rounded-lg hover:bg-gray-700 transition-colors duration-300"
           >
             {sidebarOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -53,7 +54,10 @@ export default function AdminDashboard() {
           {Object.entries(sections).map(([key, { icon: Icon, title }]) => (
             <button
               key={key}
-              onClick={() => setActiveSection(key)}
+              onClick={() => {
+                setActiveSection(key);
+                setSidebarOpen(false);
+              }}
               className={`cursor-pointer w-full flex items-center px-2 py-3 transition-all duration-300 text-left ${
                 activeSection === key
                   ? 'bg-blue-600 border-r-4 border-yellow-400'
@@ -75,7 +79,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-auto">
+      {!sidebarOpen && <div className="flex-1 overflow-auto">
         <header className="bg-white shadow-sm border-b p-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-gray-800">
@@ -92,7 +96,7 @@ export default function AdminDashboard() {
         <main>
           {renderContent()}
         </main>
-      </div>
+      </div>}
     </div>
   );
 }

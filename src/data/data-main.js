@@ -115,33 +115,33 @@ export const certifications = [
 
 /* === STATS - OPTIMIZED === */
 export const stats = [
-    { 
-        number: "17000+", 
-        label: "IVF Cycles in Bhopal", 
-        icon: <FaHeart />, 
-        color: "text-red-500", 
-        url: "ivf-cycles-bhopal-success" 
+    {
+        number: "17000+",
+        label: "IVF Cycles in Bhopal",
+        icon: <FaHeart />,
+        color: "text-red-500",
+        url: "ivf-cycles-bhopal-success"
     },
-    { 
-        number: "85%", 
-        label: "IVF Success Rate Bhopal", 
-        icon: <FaStar />, 
-        color: "text-yellow-500", 
-        url: "ivf-success-rate-bhopal" 
+    {
+        number: "85%",
+        label: "IVF Success Rate Bhopal",
+        icon: <FaStar />,
+        color: "text-yellow-500",
+        url: "ivf-success-rate-bhopal"
     },
-    { 
-        number: "14+", 
-        label: "Years IVF Experience Bhopal", 
-        icon: <FaAward />, 
-        color: "text-yellow-500", 
-        url: "ivf-experience-bhopal" 
+    {
+        number: "14+",
+        label: "Years IVF Experience Bhopal",
+        icon: <FaAward />,
+        color: "text-yellow-500",
+        url: "ivf-experience-bhopal"
     },
-    { 
-        number: "NABH", 
-        label: "Best Accredited IVF Centre Bhopal", 
-        icon: <FaShieldAlt />, 
-        color: "text-green-500", 
-        url: "best-accredited-ivf-centre-bhopal" 
+    {
+        number: "NABH",
+        label: "Best Accredited IVF Centre Bhopal",
+        icon: <FaShieldAlt />,
+        color: "text-green-500",
+        url: "best-accredited-ivf-centre-bhopal"
     },
 ];
 
@@ -170,60 +170,66 @@ export const specialFeatures = [
 /* === GALLERY === */
 export const gallery = [
     {
-      id: 1,
-      src: "/gallery/recovery-room.png",
-      alt: "Modern Operation Theater - Hajela Hospital IVF Center Bhopal",
-      title: "Advanced Operation Theater",
-      description:
-        "State-of-the-art surgical facility for IVF procedures and laparoscopic surgeries with international standards at Hajela Hospital Bhopal.",
-      category: "facility",
+        "_id": "6916236e28cda85bfd88b3af",
+        "url": "https://res.cloudinary.com/dzzsezfck/image/upload/v1763058542/gallery/sc3wvda1yjvayg55islj.png",
+        "public_id": "gallery/sc3wvda1yjvayg55islj",
+        "caption": "National Recognition",
+        "category": "awards",
+        "description": "Award-winning excellence in reproductive medicine recognized by national medical bodies - Hajela Hospital Bhopal.",
+        "createdAt": "2025-11-13T18:29:02.335Z",
+        "updatedAt": "2025-11-13T18:29:02.335Z",
     },
     {
-      id: 2,
-      src: "/gallery/ivf-lab.png",
-      alt: "Advanced IVF Laboratory - Hajela Hospital Fertility Center Bhopal",
-      title: "Modern IVF Laboratory",
-      description:
-        "Equipped with latest technology for embryo culture, ICSI, and cryopreservation ensuring highest IVF success rates in Bhopal.",
-      category: "facility",
+        "_id": "691622ec28cda85bfd88b3ad",
+        "url": "https://res.cloudinary.com/dzzsezfck/image/upload/v1763058412/gallery/zwdeqvvnxhsvjlhjasna.jpg",
+        "public_id": "gallery/zwdeqvvnxhsvjlhjasna",
+        "caption": "Success Celebration",
+        "category": "success",
+        "description": "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
+        "createdAt": "2025-11-13T18:26:52.493Z",
+        "updatedAt": "2025-11-13T18:26:52.493Z",
     },
     {
-      id: 3,
-      src: "/gallery/IMG_20251108_160141.jpg",
-      alt: "Patient Recovery Room - Hajela Hospital Bhopal Comfort Care",
-      title: "Luxury Recovery Suites",
-      description:
-        "Comfortable and private recovery rooms with modern amenities for post-procedure care and relaxation at our Bhopal center.",
-      category: "facility",
+        "_id": "691620e5862163c8907d5a53",
+        "url": "https://res.cloudinary.com/dzzsezfck/image/upload/v1763057893/gallery/ztnmk9nlao97sxhb4sqb.jpg",
+        "public_id": "gallery/ztnmk9nlao97sxhb4sqb",
+        "caption": "Comprehensive Assessment",
+        "category": "consultation",
+        "description": "Detailed fertility evaluation and personalized treatment planning with Dr. Supriya Hajela at Hajela Hospital Bhopal.",
+        "createdAt": "2025-11-13T18:18:13.521Z",
+        "updatedAt": "2025-11-13T18:25:37.889Z",
     },
     {
-      id: 4,
-      src: "/gallery/IMG-20251108-WA0005.jpg",
-      alt: "Fertility Assessment - Dr Supriya Hajela Consultation Bhopal",
-      title: "Comprehensive Assessment",
-      description:
-        "Detailed fertility evaluation and personalized treatment planning with Dr. Supriya Hajela at Hajela Hospital Bhopal.",
-      category: "consultation",
+        "_id": "69162092862163c8907d5a51",
+        "url": "https://res.cloudinary.com/dzzsezfck/image/upload/v1763057810/gallery/k39eq7hu8v6yknqg5qmj.jpg",
+        "public_id": "gallery/k39eq7hu8v6yknqg5qmj",
+        "caption": "Luxury Recovery Suites",
+        "category": "facility",
+        "description": "Comfortable and private recovery rooms with modern amenities for post-procedure care and relaxation at our Bhopal center.",
+        "createdAt": "2025-11-13T18:16:50.516Z",
+        "updatedAt": "2025-11-13T18:16:50.516Z",
     },
     {
-      id: 5,
-      src: "/gallery/IMG-20251108-WA0011.jpg",
-      alt: "Success Stories - Happy Parents Hajela Hospital Bhopal",
-      title: "Success Celebration",
-      description:
-        "Join 17000+ happy families who achieved their dream of parenthood at Hajela Hospital - Best IVF Center in Bhopal.",
-      category: "success",
+        "_id": "6916203b862163c8907d5a4f",
+        "url": "https://res.cloudinary.com/dzzsezfck/image/upload/v1763057723/gallery/fntwcqfzcmfivdtu228l.png",
+        "public_id": "gallery/fntwcqfzcmfivdtu228l",
+        "caption": "Modern IVF Laboratory",
+        "category": "facility",
+        "description": "Equipped with latest technology for embryo culture, ICSI, and cryopreservation ensuring highest IVF success rates in Bhopal.",
+        "createdAt": "2025-11-13T18:15:23.222Z",
+        "updatedAt": "2025-11-13T18:15:23.222Z",
     },
     {
-      id: 6,
-      src: "/gallery/awards-ceremony.png",
-      alt: "Awards & Recognition - Dr Supriya Hajela Achievements Bhopal",
-      title: "National Recognition",
-      description:
-        "Award-winning excellence in reproductive medicine recognized by national medical bodies - Hajela Hospital Bhopal.",
-      category: "awards",
-    },
-  ];
+        "_id": "69162010862163c8907d5a4d",
+        "url": "https://res.cloudinary.com/dzzsezfck/image/upload/v1763057680/gallery/gjhdfmdt2nodovo9mb59.png",
+        "public_id": "gallery/gjhdfmdt2nodovo9mb59",
+        "caption": "Advanced Operation Theater",
+        "category": "facility",
+        "description": "State-of-the-art surgical facility for IVF procedures and laparoscopic surgeries with international standards at Hajela Hospital Bhopal.",
+        "createdAt": "2025-11-13T18:14:40.641Z",
+        "updatedAt": "2025-11-13T18:14:40.641Z",
+    }
+]
 
 /* === SERVICES - OPTIMIZED === */
 export const services = [
@@ -295,73 +301,73 @@ export const services = [
 
 /* === QUALIFICATIONS - OPTIMIZED === */
 export const qualifications = [
-    { 
-        degree: "MBBS - Medical Degree", 
-        institution: "Medical College - Best IVF Doctor Education", 
-        year: "2005", 
-        icon: <FaGraduationCap />, 
-        url: "mbbs-best-ivf-doctor-education" 
+    {
+        degree: "MBBS - Medical Degree",
+        institution: "Medical College - Best IVF Doctor Education",
+        year: "2005",
+        icon: <FaGraduationCap />,
+        url: "mbbs-best-ivf-doctor-education"
     },
-    { 
-        degree: "MS - Obstetrics & Gynecology", 
-        institution: "Specialization - Best IVF Specialist Training Bhopal", 
-        year: "2009", 
-        icon: <FaUserMd />, 
-        url: "ms-obstetrics-gynecology-ivf-specialist" 
+    {
+        degree: "MS - Obstetrics & Gynecology",
+        institution: "Specialization - Best IVF Specialist Training Bhopal",
+        year: "2009",
+        icon: <FaUserMd />,
+        url: "ms-obstetrics-gynecology-ivf-specialist"
     },
-    { 
-        degree: "FICOG - Reproductive Medicine", 
-        institution: "Fellowship - Best Fertility Specialist Certification", 
-        year: "2012", 
-        icon: <FaAward />, 
-        url: "ficog-reproductive-medicine-fertility-specialist" 
+    {
+        degree: "FICOG - Reproductive Medicine",
+        institution: "Fellowship - Best Fertility Specialist Certification",
+        year: "2012",
+        icon: <FaAward />,
+        url: "ficog-reproductive-medicine-fertility-specialist"
     },
-    { 
-        degree: "IVF TRAINING - International", 
-        institution: "International Fertility Center - Best IVF Doctor Skills", 
-        year: "2013", 
-        icon: <FaStar />, 
-        url: "ivf-training-international-best-doctor" 
+    {
+        degree: "IVF TRAINING - International",
+        institution: "International Fertility Center - Best IVF Doctor Skills",
+        year: "2013",
+        icon: <FaStar />,
+        url: "ivf-training-international-best-doctor"
     },
 ];
 
 /* === EXPERTISE - OPTIMIZED === */
 export const expertise = [
-    { 
-        icon: <FaMicroscope />, 
-        title: "Best IVF & ICSI Treatment in Bhopal", 
-        url: "best-ivf-icsi-treatment-bhopal", 
-        description: "Advanced in vitro fertilization techniques with 85% success rates at NABH accredited Hajela Hospital - Best IVF Center Bhopal." 
+    {
+        icon: <FaMicroscope />,
+        title: "Best IVF & ICSI Treatment in Bhopal",
+        url: "best-ivf-icsi-treatment-bhopal",
+        description: "Advanced in vitro fertilization techniques with 85% success rates at NABH accredited Hajela Hospital - Best IVF Center Bhopal."
     },
-    { 
-        icon: <FaSyringe />, 
-        title: "IUI Treatment in Bhopal", 
-        url: "iui-treatment-bhopal", 
-        description: "Best Intrauterine insemination procedures in Bhopal with precision timing for optimal results at Hajela Hospital Fertility Center." 
+    {
+        icon: <FaSyringe />,
+        title: "IUI Treatment in Bhopal",
+        url: "iui-treatment-bhopal",
+        description: "Best Intrauterine insemination procedures in Bhopal with precision timing for optimal results at Hajela Hospital Fertility Center."
     },
-    { 
-        icon: <FaSnowflake />, 
-        title: "Fertility Preservation in Bhopal", 
-        url: "fertility-preservation-bhopal", 
-        description: "Best Egg & embryo freezing services in Bhopal using vitrification technology at Hajela Hospital - Top Fertility Center MP." 
+    {
+        icon: <FaSnowflake />,
+        title: "Fertility Preservation in Bhopal",
+        url: "fertility-preservation-bhopal",
+        description: "Best Egg & embryo freezing services in Bhopal using vitrification technology at Hajela Hospital - Top Fertility Center MP."
     },
-    { 
-        icon: <FaUserMd />, 
-        title: "Laparoscopic Surgery in Bhopal", 
-        url: "laparoscopic-surgery-bhopal", 
-        description: "Best Minimally invasive procedures in Bhopal for fibroids and cysts with faster recovery at Hajela Hospital IVF Center." 
+    {
+        icon: <FaUserMd />,
+        title: "Laparoscopic Surgery in Bhopal",
+        url: "laparoscopic-surgery-bhopal",
+        description: "Best Minimally invasive procedures in Bhopal for fibroids and cysts with faster recovery at Hajela Hospital IVF Center."
     },
-    { 
-        icon: <FaHeartbeat />, 
-        title: "PCOS Treatment in Bhopal", 
-        url: "pcos-treatment-bhopal", 
-        description: "Best Comprehensive PCOS treatment in Bhopal including lifestyle modification and ovulation induction by Dr. Supriya Hajela." 
+    {
+        icon: <FaHeartbeat />,
+        title: "PCOS Treatment in Bhopal",
+        url: "pcos-treatment-bhopal",
+        description: "Best Comprehensive PCOS treatment in Bhopal including lifestyle modification and ovulation induction by Dr. Supriya Hajela."
     },
-    { 
-        icon: <FaUserMd />, 
-        title: "Male Infertility Treatment in Bhopal", 
-        url: "male-infertility-treatment-bhopal", 
-        description: "Best Complete male fertility evaluation in Bhopal with advanced semen analysis and treatment at Hajela Hospital." 
+    {
+        icon: <FaUserMd />,
+        title: "Male Infertility Treatment in Bhopal",
+        url: "male-infertility-treatment-bhopal",
+        description: "Best Complete male fertility evaluation in Bhopal with advanced semen analysis and treatment at Hajela Hospital."
     },
 ];
 

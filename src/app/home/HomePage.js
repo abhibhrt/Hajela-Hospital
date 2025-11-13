@@ -4,6 +4,7 @@ import StoryViewer from '../components/storyview'
 import HeroSection from './hero-section'
 import ServicesSection from './services-section'
 import GallerySection from './gallery-section'
+import axios from 'axios'
 import { stats, specialFeatures, gallery, services } from '@/data/data-main'
 
 export default function Home() {
@@ -11,6 +12,21 @@ export default function Home() {
     const [selectedImage, setSelectedImage] = useState(null)
     const [currentIndex, setCurrentIndex] = useState(0)
     const heroRef = useRef(null)
+    const [galleryData, setGalleryData] = useState(gallery);
+
+    useEffect(() => {
+        async function GalleryDataFetch(params) {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/gallery`);
+                setGalleryData(response.data);
+            }
+            catch (err) {
+                console.log(err?.message);
+            }
+        }
+        console.log('chup behenchod')
+        GalleryDataFetch();
+    }, []);
 
     useEffect(() => {
         setMounted(true)
@@ -111,7 +127,7 @@ export default function Home() {
 
             {/* gallery */}
             <GallerySection
-                gallery={gallery}
+                gallery={galleryData}
                 openLightbox={openLightbox}
                 selectedImage={selectedImage}
                 closeLightbox={closeLightbox}

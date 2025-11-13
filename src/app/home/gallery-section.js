@@ -67,8 +67,8 @@ export default function GallerySection({
                         >
                             <div className='relative h-64 overflow-hidden'>
                                 <img
-                                    src={image.src}
-                                    alt={image.alt}
+                                    src={image.url}
+                                    alt={image.caption}
                                     className='w-full h-full object-cover'
                                 />
                                 <div className='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
@@ -76,14 +76,14 @@ export default function GallerySection({
                                         <FaExpand className='text-white text-xl' />
                                     </div>
                                 </div>
-                                <div className='absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 text-xs font-semibold rounded-full capitalize -translate-x-4 group-hover:translate-x-0 transition-transform duration-300'>
+                                <div className='absolute top-4 left-7 bg-blue-600 text-white px-3 py-1 text-xs font-semibold rounded-full capitalize -translate-x-4 group-hover:translate-x-0 transition-transform duration-300'>
                                     {image.category}
                                 </div>
                             </div>
 
                             <div className='p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
                                 <h3 className='text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors'>
-                                    {image.title}
+                                    {image.caption}
                                 </h3>
                                 <p className='text-gray-600 text-sm line-clamp-2'>
                                     {image.description}
@@ -147,13 +147,13 @@ export default function GallerySection({
                             onClick={(e) => e.stopPropagation()}
                         >
                             <img
-                                src={selectedImage.src}
-                                alt={selectedImage.alt}
+                                src={selectedImage.url}
+                                alt={selectedImage.caption}
                                 className='w-full h-auto max-h-[80vh] object-contain bg-black'
                             />
                             <div className='p-6'>
                                 <h3 className='text-2xl font-bold text-gray-900 mb-2'>
-                                    {selectedImage.title}
+                                    {selectedImage.caption}
                                 </h3>
                                 <p className='text-gray-600'>{selectedImage.description}</p>
                                 <div className='mt-4 flex justify-between items-center'>
