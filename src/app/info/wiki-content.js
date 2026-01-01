@@ -37,4 +37,5 @@ export default function WikiContent({ data }) {
             )}
         </motion.div>
     );
-}
+} 
+
